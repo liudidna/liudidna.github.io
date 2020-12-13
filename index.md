@@ -5,8 +5,6 @@ subtitle: 刘迪的主页
 ---
 # My favorite sites:
 ---
-- [local host](http://localhost:4000/)
-- [github host](liudidna.github.io)
 
 ### Commonly used sites:
 - [Baidu](http://www.baidu.com/)
@@ -35,6 +33,9 @@ subtitle: 刘迪的主页
 * Lists
 * of items
 
+### Site hosts:
+- [local host](http://localhost:4000/)
+- [github host](liudidna.github.io)
 or
 
 1. numbered lists

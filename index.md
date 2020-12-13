@@ -5,7 +5,9 @@ subtitle: 刘迪的主页
 ---
 # My favorite sites:
 ---
-<br>
+- [local host](http://localhost:4000/)
+- [github host](liudidna.github.io)
+
 ### Commonly used sites:
 - [Baidu](http://www.baidu.com/)
 - [Google](https://www.google.com/)

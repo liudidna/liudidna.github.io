@@ -3,10 +3,10 @@ layout: home
 title: Di Liu's Site
 subtitle: 刘迪的主页
 ---
-# My favorite sites:
+# <i class="far fa-bookmark"></i> My favorite sites:
 ---
 
-### Commonly used sites:
+### <i class="fab fa-angellist"></i> Commonly used sites:
 - [Baidu](http://www.baidu.com/)
 - [Google](https://www.google.com/)
 - [Youtube](https://www.youtube.com/)
@@ -14,28 +14,32 @@ subtitle: 刘迪的主页
 - [Amazon](https://www.amazon.com/)
 - [Google Scholar](https://scholar.google.com/schhp?hl=en&as_sdt=0,14)
 
-### Science:
+### <i class="fas fa-dna"></i> Science:
 
-### Science groups:
+### <i class="fas fa-users"></i> Science groups:
 - [Piccirlli group](https://voices.uchicago.edu/piccirillilab/lab-members/)
 - [Weizmann group](https://www.weizmann-group.com/)
 - [Yin group](https://yin.hms.harvard.edu/publications.html)
 
-### Investment:
+### <i class="fa fa-university" aria-hidden="true"></i> Investment:
 - [雪球](https://xueqiu.com/)
 - [Longtermtrend's charts](https://www.longtermtrends.net/stocks-to-real-estate-ratio/)
 - [Dividend calendar](https://www.nasdaq.com/market-activity/dividends)
 - [Robinhood](https://robinhood.com/)
 
-### COVID related:
+### <i class="fas fa-viruses"></i> COVID related:
 - [COVID data](https://coronavirus.1point3acres.com/zh)
 - [COLOR](https://home.color.com/covid/activation/ready-to-activate)
-* Lists
-* of items
 
-### Site hosts:
+### <i class="fas fa-shopping-cart"></i> Shopping:
+- [Dealmoon](http://www.dealmoon.com/cn/)
+- [B&Hphotos](https://www.bhphotovideo.com/)
+
+### <i class="fas fa-door-open"></i> Site hosts:
 - [local host](http://localhost:4000/)
 - [github host](liudidna.github.io)
+
+
 or
 
 1. numbered lists

@@ -15,21 +15,29 @@ subtitle: 刘迪的主页
 - [Google Scholar](https://scholar.google.com/schhp?hl=en&as_sdt=0,14)
 
 ### <i class="fas fa-dna"></i> Science:
+- [Nature: DNA nano](https://www.nature.com/subjects/dna-nanotechnology)
 
-### <i class="fas fa-users"></i> Science groups:
+### <i class="fas fa-user-astronaut"></i> Science groups:
 - [Piccirlli group](https://voices.uchicago.edu/piccirillilab/lab-members/)
 - [Weizmann group](https://www.weizmann-group.com/)
 - [Yin group](https://yin.hms.harvard.edu/publications.html)
 
+### <i class="fas fa-users"></i> Social:
+- [知乎](https://www.zhihu.com/)
+- [Weibo](http://weibo.com/)
+
 ### <i class="fa fa-university" aria-hidden="true"></i> Investment:
 - [雪球](https://xueqiu.com/)
+- [Google finance](https://www.google.com/finance/)
 - [Longtermtrend's charts](https://www.longtermtrends.net/stocks-to-real-estate-ratio/)
 - [Dividend calendar](https://www.nasdaq.com/market-activity/dividends)
 - [Robinhood](https://robinhood.com/)
+- [Vanguard](https://investor.vanguard.com/home)
 
-### <i class="fas fa-viruses"></i> COVID related:
+### <i class="fas fa-ambulance"></i> COVID related:
 - [COVID data](https://coronavirus.1point3acres.com/zh)
 - [COLOR](https://home.color.com/covid/activation/ready-to-activate)
+- [Crimson Clear](https://crimsonclear.harvard.edu/harvard/start)
 
 ### <i class="fas fa-shopping-cart"></i> Shopping:
 - [Dealmoon](http://www.dealmoon.com/cn/)
@@ -39,16 +47,5 @@ subtitle: 刘迪的主页
 - [local host](http://localhost:4000/)
 - [github host](liudidna.github.io)
 
-
-or
-
-1. numbered lists
-2. as such
-
-> Blockquotes  
-> Like these?
-
-etc.
-<a href="http://stackoverflow.com" target="_blank">Go</a>
 
 ![kitten](http://placekitten.com/g/1099/150)

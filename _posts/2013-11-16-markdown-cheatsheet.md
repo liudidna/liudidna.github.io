@@ -7,6 +7,8 @@ date:   2013-12-13 02:11:35 -0500
 
 # Markdown cheatsheet {#top_title}
 
+[TOC]
+
 ---
 ## Color and Font via HTML:
 `<span style="color:blue">some *blue* text</span>`  
@@ -126,6 +128,10 @@ For convenience, use the [`TablesGenerator`](https://www.tablesgenerator.com/mar
 *(Not supported by DP)*  
 [//]: # (This may be the most platform independent comment)
 
+`<!-- <p>HTML comments</p> -->`
+*(It works if nothing appears below.)*  
+<!-- <p>HTML comments</p> -->
+
 ---
 ## Useful links:
 [Wiznote](https://www.wiz.cn/feature-markdown.html)  
@@ -134,4 +140,4 @@ For convenience, use the [`TablesGenerator`](https://www.tablesgenerator.com/mar
 
 ---
 
-[To top](#top_title)
+<button><i class="fas fa-sync"></i> [To top](#top_title)</button>

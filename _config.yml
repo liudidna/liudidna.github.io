@@ -14,13 +14,14 @@ author: Di Liu
 # --- List of links in the navigation bar --- #
 
 navbar-links:
+  Sites: "sites"
   About Me: "aboutme"
   Posts: "posts"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
     - Cheatsheets: "2013-12-13-markdown-cheatsheet"
-  Author's home: "https://deanattali.com"
+#  Author's home: "https://deanattali.com"
 
 # --- Logo --- #
 
@@ -35,32 +36,31 @@ round-avatar: true
 # then specify the following parameter
 #title-img: /path/to/image
 
-
 # --- Footer social media links --- #
 
 # Select the social network links that you want to show in the footer.
 # Uncomment the links you want to show and add your information to each one.
 social-network-links:
   email: "liudidna@gmail.com"
-#  facebook: deanattali
+  #  facebook: deanattali
   github: liudidna
   twitter: cokiestdi
-#  patreon: DeanAttali
-#  youtube: c/daattali
-#  reddit: yourname
-#  linkedin: daattali
-#  xing: yourname
-#  stackoverflow: "3943160/daattali"
-#  snapchat: deanat78
-#  instagram: deanat78
-#  spotify: yourname
-#  telephone: +14159998888
-#  steam: deanat78
-#  twitch: yourname
-#  yelp: yourname
-#  telegram: yourname
-#  calendly: yourname
-#  mastodon: instance.url/@username
+  #  patreon: DeanAttali
+  #  youtube: c/daattali
+  #  reddit: yourname
+  #  linkedin: daattali
+  #  xing: yourname
+  #  stackoverflow: "3943160/daattali"
+  #  snapchat: deanat78
+  #  instagram: deanat78
+  #  spotify: yourname
+  #  telephone: +14159998888
+  #  steam: deanat78
+  #  twitch: yourname
+  #  yelp: yourname
+  #  telegram: yourname
+  #  calendly: yourname
+  #  mastodon: instance.url/@username
   ORCID: 0000-0002-0708-7466
   google-scholar: "citations?hl=en&user=jh1ypxQAAAAJ"
 
@@ -196,19 +196,19 @@ paginate: 5
 
 kramdown:
   input: GFM
+#  footnote_backlink: "⤴"
+#  parse_block_html: true
 
 # Default YAML values (more information on Jekyll's site)
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      comments: true  # add comments to all blog posts
+      comments: true # add comments to all blog posts
       social-share: true # add social media sharing buttons to all blog posts
-  -
-    scope:
+  - scope:
       path: "" # any file that's not a post will be a "page" layout by default
     values:
       layout: "page"
@@ -231,7 +231,6 @@ collections:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
 

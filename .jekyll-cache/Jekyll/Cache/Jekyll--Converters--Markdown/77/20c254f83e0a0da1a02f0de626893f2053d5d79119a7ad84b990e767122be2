@@ -1,0 +1,269 @@
+I"/<h2 id="top_title" class="no_toc">Contents</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#color-and-font-via-html-and-inline-css" id="markdown-toc-color-and-font-via-html-and-inline-css">Color and Font via HTML and inline CSS:</a></li>
+  <li><a href="#special-separators-via-html" id="markdown-toc-special-separators-via-html">Special separators via HTML:</a></li>
+  <li><a href="#link--picture" id="markdown-toc-link--picture">link &amp; picture:</a></li>
+  <li><a href="#align" id="markdown-toc-align">Align</a></li>
+  <li><a href="#table" id="markdown-toc-table">Table</a></li>
+  <li><a href="#comments" id="markdown-toc-comments">Comments</a></li>
+  <li><a href="#toc" id="markdown-toc-toc">TOC</a></li>
+  <li><a href="#expand" id="markdown-toc-expand">Expand</a></li>
+  <li><a href="#footnotes" id="markdown-toc-footnotes">Footnotes:</a></li>
+  <li><a href="#useful-links" id="markdown-toc-useful-links">Useful links:</a></li>
+</ol>
+
+<hr />
+
+<h2 id="color-and-font-via-html-and-inline-css">Color and Font via HTML and inline CSS:</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;span style="color:blue"&gt;some *blue* text&lt;/span&gt;</code><br />
+<span style="color:blue">some <em>blue</em> text</span></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;font color="blue"&gt;some *blue* text&lt;/font&gt;</code></p>
+<font color="blue">some _blue_ text</font>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;font color="blue", face="Courier New"&gt;some *blue* text @ Courier New&lt;/font&gt;</code><br />
+<em>(Not supported by DP)</em><br />
+&lt;font color=”blue”, face=”Courier New”&gt;some <em>blue</em> text @ Courier New&lt;/font&gt;</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;span style="color:blue; font-family:'Courier New'; font-size:40px"&gt;some 40px *blue* text @ Courier New&lt;/span&gt;</code><br />
+<span style="color:blue; font-family:'Courier New'; font-size:40px">some 40px <em>blue</em> text @ Courier New</span> is here</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;font color="blue"&gt;&lt;i&gt;some&lt;/i&gt; &lt;u&gt;blue&lt;/u&gt; &lt;b&gt;text&lt;/b&gt;&lt;/font&gt;</code></p>
+<font color="blue"><i>some</i> <u>blue</u> <b>text</b></font>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;sup&gt;A&lt;/sup&gt; A &lt;sub&gt;B&lt;/sub&gt;</code><br />
+<sup>A</sup> A <sub>B</sub></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;span style="color:green" onMouseOver="this.style.color='red'; this.style.fontSize='2em';" onMouseOut="this.style.color='blue'; this.style.fontSize='1em'"&gt;some changing text&lt;/span&gt;</code><br />
+<span style="color:green" onmouseover="this.style.color='red'; this.style.fontSize='2em';" onmouseout="this.style.color='blue'; this.style.fontSize='1em'">some changing text</span></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd class=""&gt;T&lt;/kbd&gt;</code><br />
+<kbd>Command</kbd> + <kbd class="">T</kbd>
+<!-- # some changing text {:style="color:green"} --></p>
+
+<!-- **with kramdown syntax** -->
+<!-- <style>
+    .blue_bold {
+        color: blue;
+        font-weight: bold;
+    }
+</style>
+
+#### A blue and bold paragraph. { .blue_bold} -->
+
+<h2 id="special-separators-via-html">Special separators via HTML:</h2>
+<p><strong>Space:</strong><br />
+<code class="language-plaintext highlighter-rouge">some&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;spaces</code><br />
+some    spaces</p>
+
+<p><strong>Line break:</strong><br />
+<code class="language-plaintext highlighter-rouge">line&lt;br&gt;break</code><br />
+line<br />break</p>
+
+<p><strong>horizontal line:</strong><br />
+<code class="language-plaintext highlighter-rouge">&lt;hr&gt;</code></p>
+<hr />
+
+<hr />
+
+<h2 id="link--picture">link &amp; picture:</h2>
+
+<p><strong>link method 1:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Google1][]
+
+[Google1]: http://google.com/
+</code></pre></div></div>
+
+<p><em>(Not supported by DP, better to add an empty line)</em></p>
+
+<p><a href="http://google.com/">Google1</a></p>
+
+<p>do not foget <code class="language-plaintext highlighter-rouge">http://</code></p>
+
+<p><strong>link method 2:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[Google2][12]
+
+[12]: http://google.com/
+</code></pre></div></div>
+
+<p><em>(Not supported by DP, better to add an empty line)</em><br />
+<a href="http://google.com/">Google2</a></p>
+
+<p><strong>link method 3:</strong><br />
+<code class="language-plaintext highlighter-rouge">[Google3](http://google.com/)</code><br />
+<a href="http://google.com/">Google3</a>
+no space between <code class="language-plaintext highlighter-rouge">]</code> and <code class="language-plaintext highlighter-rouge">(</code></p>
+
+<p><strong>link method 4 (open in new tab):</strong><br />
+<code class="language-plaintext highlighter-rouge">&lt;a href="http://google.com/" target="_blank"&gt;Go&lt;/a&gt;</code><br />
+<a href="http://google.com/" target="_blank">Go</a></p>
+
+<p><strong>link method 5 (open in new tab2, kramdown):</strong><br />
+<code class="language-plaintext highlighter-rouge">[Go2](http://google.com/){:target="_blank"}</code><br />
+<a href="http://google.com/" target="\_blank">Go2</a></p>
+
+<p><strong>link to heading IDs:</strong><br />
+<em>(Not supported by DP)</em><br />
+<code class="language-plaintext highlighter-rouge"># Markdown cheatsheet {#top_title}</code><br />
+<code class="language-plaintext highlighter-rouge">[To top](#top_title)</code><br />
+<a href="#top_title">To top</a></p>
+
+<p><strong>linked image 1:</strong><br />
+<strong>After you copy the public Dropbox link to your clipboard, just change <code class="language-plaintext highlighter-rouge">?dl=0</code> to <code class="language-plaintext highlighter-rouge">?raw=1</code> at the end of the URL.</strong><br />
+<code class="language-plaintext highlighter-rouge">![myself](https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1)</code><br />
+<img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" alt="myself" /></p>
+
+<p><strong>linked image 2, with HTML:</strong><br />
+<code class="language-plaintext highlighter-rouge">&lt;img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width = "50" height = "100" alt="title"&gt;</code><br />
+<img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width="50" height="100" alt="title" /></p>
+
+<p><strong>linked image 3, with HTML more options:</strong></p>
+
+<pre><code class="language-HTML">&lt;div style="text-align: center"&gt;
+&lt;p&gt;Young man. &lt;img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width = "50" height = "100" alt="title" style="vertical-align:middle"&gt; Yes he was.&lt;/p&gt;
+&lt;p&gt;Young man. &lt;img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width = "50" height = "100" alt="title" style="vertical-align:top"&gt; Yes he was.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<div style="text-align: center">
+<p>Young man. <img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width="50" height="100" alt="title" style="vertical-align:middle" /> Yes he was.</p>
+<p>Young man. <img src="https://www.dropbox.com/s/jbn7jwu7uw4ovpa/0431%2520ld.jpg?raw=1" width="50" height="100" alt="title" style="vertical-align:top" /> Yes he was.</p>
+</div>
+
+<hr />
+
+<h2 id="align">Align</h2>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;div style="text-align: right"&gt; your-text-here &lt;/div&gt;</code></p>
+
+<div style="text-align: right"> your-text-here </div>
+<p><code class="language-plaintext highlighter-rouge">&lt;div style="text-align: justify"&gt; your-text-here &lt;/div&gt;</code></p>
+<div style="text-align: justify"> your-text-here </div>
+
+<hr />
+
+<h2 id="table">Table</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| old version | new version |
+|:---:|:---:|
+|`C5*`           | `C5'`|
+|`..*`           | `..'`|
+|`O1P`          |`OP1`|
+|`O2P`          |`OP2`|
+</code></pre></div></div>
+
+<p><em>(Not supported by DP)</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">old version</th>
+      <th style="text-align: center">new version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">C5*</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">C5'</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">..*</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">..'</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">O1P</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">OP1</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">O2P</code></td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">OP2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For convenience, use the <a href="https://www.tablesgenerator.com/markdown_tables"><code class="language-plaintext highlighter-rouge">TablesGenerator</code></a>!</p>
+
+<hr />
+
+<h2 id="comments">Comments</h2>
+
+<p><code class="language-plaintext highlighter-rouge">[//]: # (This may be the most platform independent comment)</code><br />
+<em>(Not supported by DP)</em><br />
+[//]: # (This may be the most platform independent comment)</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;!-- &lt;p&gt;HTML comments&lt;/p&gt; --&gt;</code>
+<em>(It works if nothing appears below.)</em></p>
+
+<!-- <p>HTML comments</p> -->
+
+<hr />
+
+<h2 id="toc">TOC</h2>
+
+<p><strong>not ordered</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* TOC
+{:toc}
+</code></pre></div></div>
+
+<p><strong>ordered</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. TOC
+{:toc}
+</code></pre></div></div>
+
+<h2 id="expand">Expand</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;details&gt;
+&lt;summary&gt;Click to expand!&lt;/summary&gt;
+
+- A
+- B
+
+&lt;/details&gt;
+</code></pre></div></div>
+
+<p><em>(MD syntax may not be recognized inside HTML block)</em></p>
+
+<details>
+<summary>Click to expand!</summary>
+
+- A
+- B
+
+</details>
+
+<hr />
+<h2 id="footnotes">Footnotes:</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is some text[^1].
+
+[^1]: Some *crazy* footnote definition.
+</code></pre></div></div>
+<p><em>(Sometimes an empty line is needed.)</em><br />
+This is some text<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+
+<h2 id="useful-links">Useful links:</h2>
+
+<p><a href="https://www.wiz.cn/feature-markdown.html">Wiznote</a><br />
+<a href="https://blog.huihut.com/2017/01/25/MarkdownTutorial/">huihut</a><br />
+<a href="https://www.markdownguide.org">Markdown Guide</a><br />
+<a href="https://kramdown.gettalong.org/index.html">kramdown</a><br />
+<a href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/basic-writing-and-formatting-syntax">Github writing</a></p>
+
+<hr />
+
+<p><a href="#top_title">
+    <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
+</a></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Some <em>crazy</em> footnote definition. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

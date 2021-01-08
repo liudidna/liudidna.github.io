@@ -1,0 +1,136 @@
+I"�1<h3 id="top_title" class="no_toc">Contents</h3>
+
+<ul id="markdown-toc">
+  <li><a href="#prepare-rna-motif" id="markdown-toc-prepare-rna-motif">Prepare RNA motif</a>    <ul>
+      <li><a href="#prepare-cleaned-rna-motif-from-pdb-file" id="markdown-toc-prepare-cleaned-rna-motif-from-pdb-file">Prepare cleaned RNA motif from PDB file</a></li>
+      <li><a href="#align-helix-onto-the-motif-only-for-motif-flanked-by-less-than-3-bp-helix" id="markdown-toc-align-helix-onto-the-motif-only-for-motif-flanked-by-less-than-3-bp-helix">Align helix onto the motif (<em>only for motif flanked by less than 3-bp helix</em>)</a></li>
+    </ul>
+  </li>
+  <li><a href="#construct-triangle-with-nanotiler" id="markdown-toc-construct-triangle-with-nanotiler">Construct triangle with nanotiler</a>    <ul>
+      <li><a href="#locate-the-helix-ends-in-nanotiler" id="markdown-toc-locate-the-helix-ends-in-nanotiler">Locate the helix ends in nanotiler</a></li>
+      <li><a href="#search-the-optimal-lengths-of-connecting-helices-with-nanotiler-script" id="markdown-toc-search-the-optimal-lengths-of-connecting-helices-with-nanotiler-script">Search the optimal lengths of connecting helices with nanotiler script</a></li>
+      <li><a href="#rigid-body-energy-optimization-with-nanotiler-script" id="markdown-toc-rigid-body-energy-optimization-with-nanotiler-script">Rigid-body energy optimization with nanotiler script</a></li>
+      <li><a href="#post-processing-of-the-output-pdb-file" id="markdown-toc-post-processing-of-the-output-pdb-file">Post-processing of the output PDB file</a></li>
+    </ul>
+  </li>
+  <li><a href="#coarse-grain-simulation-using-simrna" id="markdown-toc-coarse-grain-simulation-using-simrna">Coarse-grain simulation using simRNA</a>    <ul>
+      <li><a href="#sequence-file-and-secondary-structure-file" id="markdown-toc-sequence-file-and-secondary-structure-file">Sequence file and secondary structure file</a></li>
+      <li><a href="#motif-and-sticky-end-stacking-restraints" id="markdown-toc-motif-and-sticky-end-stacking-restraints">Motif and sticky-end stacking restraints</a></li>
+      <li><a href="#run-simulation-with-simrna" id="markdown-toc-run-simulation-with-simrna">Run simulation with simRNA</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><a href="#top_title">
+    <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
+</a></p>
+
+<h2 id="prepare-rna-motif">Prepare RNA motif</h2>
+<h3 id="prepare-cleaned-rna-motif-from-pdb-file">Prepare cleaned RNA motif from PDB file</h3>
+
+<p>We are going to use the PDB entry <code class="language-plaintext highlighter-rouge">3P59</code>, an RNA square, as an example. The conformation of the bulge motif formed by strands E and F is in an alternative conformation. We will first try to build an RNA triangle use the EF motif. 
+In Chimera, trim the RNA structure so that only residues <code class="language-plaintext highlighter-rouge">50.E</code> to <code class="language-plaintext highlighter-rouge">60.E</code>, and <code class="language-plaintext highlighter-rouge">108.F</code> to <code class="language-plaintext highlighter-rouge">115.F</code> are left. Save the PDB of the new model. Now, the bulge motif is flanked by a 2-bp helix and a 3-bp helix on either side. This is problematic, because <strong>nanotiler</strong><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>. needs a helix of a minimum of 3-bp to recognize the helix.</p>
+
+<h3 id="align-helix-onto-the-motif-only-for-motif-flanked-by-less-than-3-bp-helix">Align helix onto the motif (<em>only for motif flanked by less than 3-bp helix</em>)</h3>
+<p>To fix this, in Chimera, build an ideal 3-bp RNA A-form helix as a new model. Then align the newly built helix onto the 2-bp helix of the cleaned bulge model by the Chimera command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>match #1:2-3.A,1-2.B@c3',c4',c5' #0:112-113.F,50-51.E@c3',c4',c5'
+</code></pre></div></div>
+<p>Combine the two models, and save the PDB as <code class="language-plaintext highlighter-rouge">bulge_EF_aligned_helix.pdb</code>.<br />
+<br /></p>
+
+<hr />
+
+<h2 id="construct-triangle-with-nanotiler">Construct triangle with nanotiler</h2>
+
+<h3 id="locate-the-helix-ends-in-nanotiler">Locate the helix ends in nanotiler</h3>
+<p>We need to find the identifiers of the ends of helices for writing the subsequent <strong>nanotiler</strong> scripts. With terminal open in the working directories:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nanoscript
+import bulge_EF_aligned_helix.pdb findstems=true name=bulge1
+exportpdb bulge_EF_aligned_helix-TMP.pdb junction=false
+tree hxend
+exit
+</code></pre></div></div>
+<p>We will get a new PDB file <code class="language-plaintext highlighter-rouge">bulge_EF_aligned_helix-TMP.pdb</code> and get output like:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root.bulge1.stems.stemA_B_1.B_3_A_9 1.1.5.1.7 1 BranchDescriptor3D  41.804 -22.104  10.349
+root.bulge1.stems.stemA_B_1.A_11_B_1 1.1.5.1.8 1 BranchDescriptor3D  34.526 -15.262  12.313
+root.bulge1.stems.stemC_D_1.D_3_C_1 1.1.5.2.7 1 BranchDescriptor3D  42.802 -30.639  17.498
+root.bulge1.stems.stemC_D_1.C_3_D_1 1.1.5.2.8 1 BranchDescriptor3D  35.113 -35.754  13.214
+</code></pre></div></div>
+<p>Use Chimera to open <code class="language-plaintext highlighter-rouge">bulge_EF_aligned_helix-TMP.pdb</code> (note that the numbering of chains and residues has been changed by <strong>nanotiler</strong>) for the identifiers of the helix ends, which are <code class="language-plaintext highlighter-rouge">root.bulge1.stems.stemA_B_1.A_11_B_1</code> and <code class="language-plaintext highlighter-rouge">root.bulge1.stems.stemC_D_1.C_3_D_1</code>. We will use <code class="language-plaintext highlighter-rouge">stems.stemA_B_1.A_11_B_1</code> and <code class="language-plaintext highlighter-rouge">stems.stemC_D_1.C_3_D_1</code> in the following scripts.</p>
+
+<h3 id="search-the-optimal-lengths-of-connecting-helices-with-nanotiler-script">Search the optimal lengths of connecting helices with nanotiler script</h3>
+<p>This <a href="https://www.dropbox.com/s/0piubrqwyl2kyym/bulgeEF-newHelixScan-NanoTiler.script?dl=0" target="_blank">searching script</a> will search connecting helices lengths ranging from 12 to 17 bps. Note that we designated <code class="language-plaintext highlighter-rouge">stems.stemA_B_1.A_11_B_1</code> and <code class="language-plaintext highlighter-rouge">stems.stemC_D_1.C_3_D_1</code> as <code class="language-plaintext highlighter-rouge">JD1</code> and <code class="language-plaintext highlighter-rouge">JD2</code> in the script. Run the script with:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># no console output</span>
+nanoscript bulgeEF-newHelixScan-NanoTiler.script <span class="o">&gt;</span> bulgeEF-newHelixScan-NanoTiler.out 2&gt;&amp;1
+</code></pre></div></div>
+<p>Or:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># with console output</span>
+nanoscript bulgeEF-newHelixScan-NanoTiler.script 2&gt;&amp;1 | <span class="nb">tee </span>bulgeEF-newHelixScan-NanoTiler.out
+</code></pre></div></div>
+<p>The searching results are written in the <code class="language-plaintext highlighter-rouge">bulgeEF-newHelixScan-NanoTiler.out</code> output file. To quickly locate the energy (<code class="language-plaintext highlighter-rouge">start_score</code> of last helix restraint), use the commands:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grep -e "####" -e "HBP1: " -e "generated_helices=h_root_bulge3_stems_stemC_D_1_C_3_D_1_root_bulge1_stems_stemA_B_1_A_11_B_1_root" bulgeEF-newHelixScan-NanoTiler.out &gt; bulgeEF-newHelixScan-NanoTiler-energy-summary.out
+</code></pre></div></div>
+<p>We can see that the optimal length of the connecting helix is 14 (<code class="language-plaintext highlighter-rouge">start_score=3430</code>)or 15 (<code class="language-plaintext highlighter-rouge">start_score=2193</code>).</p>
+
+<h3 id="rigid-body-energy-optimization-with-nanotiler-script">Rigid-body energy optimization with nanotiler script</h3>
+<p>Taking the helix length of 14, we next optimize the placement of the motifs and helices use the <a href="https://www.dropbox.com/s/7otydthgec83alb/bulgeEF_newOpt14-NanoTiler.script?dl=0" target="_blank">optimization script</a>. Note that the final optimization steps (<code class="language-plaintext highlighter-rouge">optcycles</code> in the script) should not be too small. Run the commands:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nanoscript bulgeEF_newOpt14-NanoTiler.script 2&gt;&amp;1 | tee bulgeEF_newOpt14-NanoTiler.out
+</code></pre></div></div>
+<p>We get the output PDB file <code class="language-plaintext highlighter-rouge">bulgeEF_newOpt14-5000000.pdb</code>.</p>
+
+<h3 id="post-processing-of-the-output-pdb-file">Post-processing of the output PDB file</h3>
+<p>Load the output file and remove the strands of the aligned helices:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nanoscript
+import bulgeEF_newOpt14-5000000.pdb findstems=true name=triangle
+tree strand
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convertPDB bulgeEF_newOpt14-5000000-post-3.pdb  
+</code></pre></div></div>
+<p><br /></p>
+
+<hr />
+
+<h2 id="coarse-grain-simulation-using-simrna">Coarse-grain simulation using simRNA</h2>
+
+<h3 id="sequence-file-and-secondary-structure-file">Sequence file and secondary structure file</h3>
+<p>Prepare the sequence file and secondary structure file according to simRNA.
+Add 5’-phosphate groups if they are lost in the structure.</p>
+
+<h3 id="motif-and-sticky-end-stacking-restraints">Motif and sticky-end stacking restraints</h3>
+<p>To generate motif restraints, first trim the helices flanking the bulge to 1-bp, save the PDB as <code class="language-plaintext highlighter-rouge">bulgeEF_1bp_for_restraints.pdb</code>, which can be accessed <a href="https://www.dropbox.com/s/7u1rhyk0eovxi9v/bulgeEF_1bp_for_restraints.pdb?dl=0">here</a>. Use the following commands:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> <span class="o">&gt;</span> motif_restraints
+python res_renumber_pdb_atom.py bulgeEF_1bp_for_restraints.pdb 58E 19A 110F 13B
+python res_renumber_pdb_atom.py bulgeEF_1bp_for_restraints.pdb 58E 19C 110F 13D
+python res_renumber_pdb_atom.py bulgeEF_1bp_for_restraints.pdb 58E 19E 110F 13F
+&lt;control+d&gt;
+<span class="nb">source </span>motif_restraints
+<span class="nb">ls</span> | <span class="nb">grep </span>restraints_bulgeEF_1bp | xargs <span class="nb">cat</span> <span class="o">&gt;</span> restraints_motif.dat
+</code></pre></div></div>
+
+<p>For sticky-end stacking restraints,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python /Users/wyssuser/programs/SimRNA_64bitIntel_MacOSX_staticLibs/simrna_scripts-master/get_sticky_from_seq_ss.py bulgeEF_triangle.seq bulgeEF_triangle.ss
+ls | grep restraintsSE | xargs cat &gt;&gt; restraints_SEall.dat
+</code></pre></div></div>
+
+<p>Change the weight to 0.2</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat restraints_motif.dat restraints_SEall0.2.dat &gt; Allrestraints_SE0.2.dat
+</code></pre></div></div>
+
+<h3 id="run-simulation-with-simrna">Run simulation with simRNA</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-s</span> <span class="nv">$SIMRNADATA</span> data
+SimRNA <span class="nt">-c</span> config.dat <span class="nt">-p</span> bulgeEF_newOpt14-5000000-post-3.pdb <span class="nt">-S</span> bulgeEF_triangle.ss <span class="nt">-r</span> Allrestraints_SE0.2.dat <span class="nt">-o</span> bulgeEF_triangle_try1 2&gt;&amp;1 | <span class="nb">tee </span>bulgeEF_triangle_try1.out
+</code></pre></div></div>
+<p><br />
+<!-- <button><i class="fas fa-sync"></i> [To top](#top_title)</button> --></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Shapiro. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET

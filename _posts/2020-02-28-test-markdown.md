@@ -8,6 +8,18 @@ tags: [test]
 comments: true
 ---
 
+### Contents {#top_title}
+{: .no_toc}
+
+- TOC
+{:toc}
+
+<a href="#top_title">
+    <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
+</a>
+
+---
+
 This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
 **Here is some bold text**
@@ -76,3 +88,5 @@ You can add notification, warning and error boxes like this:
 
 {: .box-error}
 **Error:** This is an error box.
+
+Note that `{: .box-note}`, `{: .box-warning}` and `{: .box-error}` are defined in `assets/css/beautifuljekyll.css`.

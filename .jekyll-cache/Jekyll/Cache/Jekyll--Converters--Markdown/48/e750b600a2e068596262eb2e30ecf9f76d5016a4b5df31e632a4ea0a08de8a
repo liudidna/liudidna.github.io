@@ -1,0 +1,314 @@
+I">�<p><a href="#top_title">
+    <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
+</a></p>
+
+<h3 id="top_title" class="no_toc">Contents</h3>
+
+<ul id="markdown-toc">
+  <li><a href="#coloring" id="markdown-toc-coloring">Coloring</a></li>
+  <li><a href="#map-settings" id="markdown-toc-map-settings">Map settings</a></li>
+  <li><a href="#normalizes-map-to-rms-and-changes-to-blue-mesh" id="markdown-toc-normalizes-map-to-rms-and-changes-to-blue-mesh">Normalizes map to rms and changes to blue mesh.</a></li>
+  <li><a href="#makes-binary-mask-at-given-threshold-then-applies-10-pixel-soft-edge" id="markdown-toc-makes-binary-mask-at-given-threshold-then-applies-10-pixel-soft-edge">Makes binary mask at given threshold, then applies 10 pixel soft edge.</a></li>
+  <li><a href="#adjust-clipping-symmetrically-around-the-center-of-rotation" id="markdown-toc-adjust-clipping-symmetrically-around-the-center-of-rotation">adjust clipping symmetrically around the center of rotation</a></li>
+  <li><a href="#shows-sphere-of-density-of-selected-radius-around-center-of-rotation" id="markdown-toc-shows-sphere-of-density-of-selected-radius-around-center-of-rotation">shows sphere of density of selected radius around center of rotation</a></li>
+  <li><a href="#usage-map_sphere-radius" id="markdown-toc-usage-map_sphere-radius">Usage: map_sphere radius</a></li>
+  <li><a href="#sets-map-to-xrms" id="markdown-toc-sets-map-to-xrms">Sets map to x*RMS</a></li>
+  <li><a href="#usage-sig-map_id-rms" id="markdown-toc-usage-sig-map_id-rms">Usage: sig #map_id rms</a></li>
+  <li><a href="#usage-load_pdb_and_maps-pdb_id" id="markdown-toc-usage-load_pdb_and_maps-pdb_id">Usage: load_pdb_and_maps pdb_id</a></li>
+  <li><a href="#usage-save_session_dir-session-name" id="markdown-toc-usage-save_session_dir-session-name">Usage: save_session_dir session-name</a></li>
+  <li><a href="#dont-use-spaces-or-under_scores-in-session-names-or-escape-underscors-like-_" id="markdown-toc-dont-use-spaces-or-under_scores-in-session-names-or-escape-underscors-like-_">Don’t use spaces or under_scores in session names (or escape underscors like: _).</a></li>
+  <li><a href="#move-both-clip-planes-hither-or-yon" id="markdown-toc-move-both-clip-planes-hither-or-yon">move both clip planes hither or yon.</a></li>
+  <li><a href="#usage-zslab-x" id="markdown-toc-usage-zslab-x">Usage: zslab x</a></li>
+  <li><a href="#move-hither-and-yon-clip-planes-towards-positive-or-away-negative" id="markdown-toc-move-hither-and-yon-clip-planes-towards-positive-or-away-negative">Move hither and yon clip planes towards (positive) or away (negative)</a></li>
+</ul>
+
+<p>This is for reference. The original file is from <a href="https://github.com/olibclarke/chimera-trimmings">olibclarke</a>.</p>
+
+<h1 id="coloring">Coloring</h1>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Pride rainbow
+</span><span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_pride</span> <span class="n">rainbow</span> <span class="s">"#BC00FF"</span><span class="p">,</span><span class="s">"#4A0082"</span><span class="p">,</span><span class="s">"#0000FF"</span><span class="p">,</span><span class="s">"#128301"</span><span class="p">,</span><span class="s">"#FFFF0B"</span><span class="p">,</span><span class="s">"#FE5E06"</span><span class="p">,</span><span class="s">"#FD0006"</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_viridis</span> <span class="n">rainbow</span> <span class="s">"#440154"</span><span class="p">,</span><span class="s">"#481567"</span><span class="p">,</span><span class="s">"#482677"</span><span class="p">,</span><span class="s">"#453781"</span><span class="p">,</span><span class="s">"#404788"</span><span class="p">,</span><span class="s">"#39568C"</span><span class="p">,</span><span class="s">"#33638D"</span><span class="p">,</span><span class="s">"#2D708E"</span><span class="p">,</span><span class="s">"#287D8E"</span><span class="p">,</span><span class="s">"#238A8D"</span><span class="p">,</span><span class="s">"#1F968B"</span><span class="p">,</span><span class="s">"#20A387"</span><span class="p">,</span><span class="s">"#29AF7F"</span><span class="p">,</span><span class="s">"#3CBB75"</span><span class="p">,</span><span class="s">"#55C667"</span><span class="p">,</span><span class="s">"#73D055"</span><span class="p">,</span><span class="s">"#95D840"</span><span class="p">,</span><span class="s">"#B8DE29"</span><span class="p">,</span><span class="s">"#DCE319"</span><span class="p">,</span><span class="s">"#FDE725"</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_magma</span> <span class="n">rainbow</span> <span class="s">"#000005"</span><span class="p">,</span><span class="s">"#080616"</span><span class="p">,</span><span class="s">"#110B2D"</span><span class="p">,</span><span class="s">"#1E0848"</span><span class="p">,</span><span class="s">"#300060"</span><span class="p">,</span><span class="s">"#43006A"</span><span class="p">,</span><span class="s">"#57096E"</span><span class="p">,</span><span class="s">"#6B116F"</span><span class="p">,</span><span class="s">"#81176D"</span><span class="p">,</span><span class="s">"#981D69"</span><span class="p">,</span><span class="s">"#B02363"</span><span class="p">,</span><span class="s">"#C92D59"</span><span class="p">,</span><span class="s">"#E03B50"</span><span class="p">,</span><span class="s">"#ED504A"</span><span class="p">,</span><span class="s">"#F66B4D"</span><span class="p">,</span><span class="s">"#FA8657"</span><span class="p">,</span><span class="s">"#FBA368"</span><span class="p">,</span><span class="s">"#FBC17D"</span><span class="p">,</span><span class="s">"#FCDF96"</span><span class="p">,</span><span class="s">"#FCFFB2"</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_magma_sse</span> <span class="n">rainbow</span> <span class="n">sse</span> <span class="s">"#000005"</span><span class="p">,</span><span class="s">"#080616"</span><span class="p">,</span><span class="s">"#110B2D"</span><span class="p">,</span><span class="s">"#1E0848"</span><span class="p">,</span><span class="s">"#300060"</span><span class="p">,</span><span class="s">"#43006A"</span><span class="p">,</span><span class="s">"#57096E"</span><span class="p">,</span><span class="s">"#6B116F"</span><span class="p">,</span><span class="s">"#81176D"</span><span class="p">,</span><span class="s">"#981D69"</span><span class="p">,</span><span class="s">"#B02363"</span><span class="p">,</span><span class="s">"#C92D59"</span><span class="p">,</span><span class="s">"#E03B50"</span><span class="p">,</span><span class="s">"#ED504A"</span><span class="p">,</span><span class="s">"#F66B4D"</span><span class="p">,</span><span class="s">"#FA8657"</span><span class="p">,</span><span class="s">"#FBA368"</span><span class="p">,</span><span class="s">"#FBC17D"</span><span class="p">,</span><span class="s">"#FCDF96"</span><span class="p">,</span><span class="s">"#FCFFB2"</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_magma_trunc</span> <span class="n">rainbow</span> <span class="s">"#6B116F"</span><span class="p">,</span><span class="s">"#81176D"</span><span class="p">,</span><span class="s">"#981D69"</span><span class="p">,</span><span class="s">"#B02363"</span><span class="p">,</span><span class="s">"#C92D59"</span><span class="p">,</span><span class="s">"#E03B50"</span><span class="p">,</span><span class="s">"#ED504A"</span><span class="p">,</span><span class="s">"#F66B4D"</span><span class="p">,</span><span class="s">"#FA8657"</span><span class="p">,</span><span class="s">"#FBA368"</span><span class="p">,</span><span class="s">"#FBC17D"</span>
+
+<span class="c1"># $1 allows for chain, model designation
+</span><span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_ryb</span> <span class="n">rainbow</span> <span class="err">$</span><span class="mi">1</span> <span class="s">"#2F7AB4"</span><span class="p">,</span><span class="s">"#ACD9E8"</span><span class="p">,</span><span class="s">"#FFFFC2"</span><span class="p">,</span><span class="s">"#FCAF68"</span><span class="p">,</span><span class="s">"#D62328"</span>
+
+<span class="n">alias</span> <span class="n">scolor_map_magma</span> <span class="n">scolor</span> <span class="err">$</span><span class="mi">1</span> <span class="n">volume</span> <span class="err">$</span><span class="mi">1</span> <span class="n">perPixel</span> <span class="n">true</span> <span class="n">cmap</span> <span class="mi">0</span><span class="p">,</span><span class="c1">#000005:0.05,#080616:0.1,#110B2D:0.15,#1E0848:0.2,#300060:0.25,#43006A:0.3,#57096E:0.35,#6B116F:0.4,#81176D:0.45,#981D69:0.5,#B02363:0.55,#C92D59:0.6,#E03B50:0.65,#ED504A:0.7,#F66B4D:0.75,#FA8657:0.8,#FBA368:0.9,#FBC17D:0.95,#FCDF96:1,#FCFFB2 cmapRange full
+</span>
+<span class="n">alias</span> <span class="n">scolor_map_magma_range</span> <span class="n">scolor</span> <span class="err">$</span><span class="mi">1</span> <span class="n">volume</span> <span class="err">$</span><span class="mi">1</span> <span class="n">perPixel</span> <span class="n">true</span> <span class="n">cmap</span> <span class="mi">0</span><span class="p">,</span><span class="c1">#000005:0.05,#080616:0.1,#110B2D:0.15,#1E0848:0.2,#300060:0.25,#43006A:0.3,#57096E:0.35,#6B116F:0.4,#81176D:0.45,#981D69:0.5,#B02363:0.55,#C92D59:0.6,#E03B50:0.65,#ED504A:0.7,#F66B4D:0.75,#FA8657:0.8,#FBA368:0.9,#FBC17D:0.95,#FCDF96:1,#FCFFB2 cmapRange $2,$3
+</span>
+<span class="n">alias</span> <span class="o">^</span><span class="n">rainbow_magma_helix</span> <span class="n">rainbow</span> <span class="n">helix</span> <span class="s">"#000005"</span><span class="p">,</span><span class="s">"#080616"</span><span class="p">,</span><span class="s">"#110B2D"</span><span class="p">,</span><span class="s">"#1E0848"</span><span class="p">,</span><span class="s">"#300060"</span><span class="p">,</span><span class="s">"#43006A"</span><span class="p">,</span><span class="s">"#57096E"</span><span class="p">,</span><span class="s">"#6B116F"</span><span class="p">,</span><span class="s">"#81176D"</span><span class="p">,</span><span class="s">"#981D69"</span><span class="p">,</span><span class="s">"#B02363"</span><span class="p">,</span><span class="s">"#C92D59"</span><span class="p">,</span><span class="s">"#E03B50"</span><span class="p">,</span><span class="s">"#ED504A"</span><span class="p">,</span><span class="s">"#F66B4D"</span><span class="p">,</span><span class="s">"#FA8657"</span><span class="p">,</span><span class="s">"#FBA368"</span><span class="p">,</span><span class="s">"#FBC17D"</span><span class="p">,</span><span class="s">"#FCDF96"</span><span class="p">,</span><span class="s">"#FCFFB2"</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">color_by_hydrophobicity</span> <span class="n">color</span> <span class="n">orange</span> <span class="n">red</span> <span class="p">:</span><span class="n">cys</span><span class="p">,</span><span class="n">ile</span><span class="p">,</span><span class="n">leu</span><span class="p">,</span><span class="n">val</span><span class="p">,</span><span class="n">tyr</span><span class="p">,</span><span class="n">met</span><span class="p">,</span><span class="n">phe</span><span class="p">,</span><span class="n">trp</span><span class="p">,</span><span class="n">ala</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span><span class="p">;</span> <span class="n">color</span> <span class="n">cornflower</span> <span class="n">blue</span> <span class="p">:</span><span class="n">ser</span><span class="p">,</span><span class="n">asn</span><span class="p">,</span><span class="n">gln</span><span class="p">,</span><span class="n">his</span><span class="p">,</span><span class="n">arg</span><span class="p">,</span><span class="n">lys</span><span class="p">,</span><span class="n">glu</span><span class="p">,</span><span class="n">asp</span><span class="p">,</span><span class="n">thr</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span><span class="p">;</span> <span class="n">color</span> <span class="n">green</span> <span class="p">:</span><span class="n">pro</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span><span class="p">;</span> <span class="n">color</span> <span class="n">magenta</span> <span class="p">:</span><span class="n">gly</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span><span class="p">;</span> <span class="n">color</span> <span class="n">gray</span> <span class="p">:</span><span class="n">unk</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span><span class="p">;</span> <span class="n">color</span> <span class="n">gray</span> <span class="o">~</span><span class="n">protein</span><span class="o">&amp;</span><span class="err">$</span><span class="mi">1</span>
+
+<span class="n">alias</span> <span class="o">^</span><span class="n">pride_rainbow_helix</span> <span class="n">rainbow</span> <span class="n">helix</span> <span class="s">"#BC00FF"</span><span class="p">,</span><span class="s">"#4A0082"</span><span class="p">,</span><span class="s">"#0000FF"</span><span class="p">,</span><span class="s">"#128301"</span><span class="p">,</span><span class="s">"#FFFF0B"</span><span class="p">,</span><span class="s">"#FE5E06"</span><span class="p">,</span><span class="s">"#FD0006"</span> 
+</code></pre></div></div>
+
+<h1 id="map-settings">Map settings</h1>
+<p>```python</p>
+<h1 id="normalizes-map-to-rms-and-changes-to-blue-mesh">Normalizes map to rms and changes to blue mesh.</h1>
+<p>#Usage: normalize_to_rms #map_id_in #map_id_out
+alias ^normalize_to_rms vop scale $1 rms 1 modelID $2; close $1; volume $2 capfaces false style mesh meshlighting false squaremesh false level 1 color #000000004bda; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1</p>
+
+<p>#Normalizes map to rms and sets two contours, -3Xrms (red mesh) and 3Xrms (green mesh)
+#Usage: split_diff_map #map_id_in #map_id_out
+alias ^split_diff_map vop scale $1 rms 1 modelID $2; close $1; volume $2 capfaces false style mesh meshlighting false squaremesh false level -3 color #da1200000000 level 3 color #0000bda00000; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1</p>
+
+<p>alias ^display_only ~modeldisp #; modeldisp $1
+alias ^display_all modeldisp #</p>
+
+<p>alias ^toggle_display display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait 50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2</p>
+
+<p>#activates indicated model (use number, no #) for motion
+alias ^activate_only ~select all; select $1
+alias activate_all select all</p>
+
+<p>#Helix, strand and coil assign the secondary structure of the current selection as indicated.
+alias ^helix setattr r isHelix true sel; setattr r isSheet false sel
+alias ^strand setattr r isHelix false sel; setattr r isSheet true sel
+alias ^coil setattr r isHelix false sel; setattr r isSheet false sel</p>
+
+<p>#Fits selection to map.
+#Usage: fitsel #map_id
+alias ^fitsel fitmap sel $1 movewholemolecules false</p>
+
+<p>#duplicates and recolors map
+#Usage: duplicate_map #mapid
+alias ^duplicate_map vop add $1 modelid 999; color orange #999; modeldisplay $1</p>
+
+<p>#selects by color. Specify two word colors as forest_green.
+#Usage: selbycolor color
+alias ^selbycolor sel :/ribbonColor=”$1” | :/color=”$1” | @/color=”$1”</p>
+
+<p>#Selects all residues between two selected residues.
+alias ^selbetween ac ri</p>
+
+<p>#Copies selection.
+alias ^copysel save ~/tmp1.py ; del ~sel ; combine sel modelid 1000; write relative #1000 #1000 ~/sel.pdb  ; close all ; open ~/tmp1.py ; open ~/sel.pdb</p>
+
+<p>alias ^copysel_with_ref save ~/tmp1.py ; del ~sel ; combine sel modelid 1000 refspec $1; write relative $1 #1000 ~/sel.pdb  ; close all ; open ~/tmp1.py ; open ~/sel.pdb</p>
+
+<p>alias ^copysel_single_model write selected $1 ~/tmp.pdb ; open ~/tmp.pdb</p>
+
+<p>#Sets all maps to grid step 1
+alias ^volstep1 volume # step 1</p>
+
+<p>#Measure rotation between two domains.
+#Usage: domain_rotation sel_for_domain1 sel_for_domain_2
+alias ^domain_rotation savepos tmp; match $1 $2; measure rotation $1 $2; reset tmp</p>
+
+<p>#Delete hydrogens
+alias ^delh sel @H=@/element=H; del sel
+alias ^delh_sel sel sel&amp;@H=@/element=H; del sel</p>
+
+<p>#Color by phi and psi angles.
+alias ^color_by_phi_psi sel :/psi&gt;=-90&amp;:/psi&lt;=30&amp;:/phi&gt;=-135&amp;:/phi&lt;=0; color blue sel; sel :/psi&gt;=90&amp;:/psi&lt;=180&amp;:/phi&gt;=-180&amp;:/phi&lt;=0; color red sel</p>
+
+<p>#Calculates a local difference map by extracting density around a selection (5A buffer) aligned to the two maps, aligning the extracted densities and subtracting one from the other.
+#Usage: local_diff_map sel #map_id1 #map_id2</p>
+
+<p>alias ^local_diff_map savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2; vop zone $2 $1 5 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 5 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp</p>
+
+<p>alias ^local_diff_map_10 savepos tmp; close #1001,1002,1003,1004,1005; fitmap $1 $2; vop zone $2 $1 10 modelid 1000 minimalbounds true; fitmap $1 $3; vop zone $3 $1 10 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp</p>
+
+<p>#Calculates a local difference map by extracting density in a sphere around the center of rotation from the two maps, aligning the extracted densities and subtracting one from the other.
+#Usage: local_diff_map_sphere #map_id1 #map_id2 radius
+alias ^local_diff_map_sphere savepos tmp; ~sel; ac mc; close #1001,1002,1003,1004,1005; vop zone $1 sel $3 modelid 1000 minimalbounds true; vop zone $2 sel $3 modelid 1001 minimalbounds true; vop scale #1000 sd 0.1 modelid 1002; vop scale #1001 sd 0.1 modelid 1003; fitmap #1003 #1002; vop resample #1003 ongrid #1002 modelid 1004; vop subtract #1002 #1004 modelid 1005 minrms true; volume #1005 step 1 ; split_diff_map #1005 #1006 ; close #1000,1001,1002,1003,1004,1005 ; reset tmp; close sel; modeldisplay $1; modeldisplay $2</p>
+
+<p>#locally aligns two maps within a given radius of the center of rotation. Assumes maps are already more or less aligned.
+#Usage: local_fitmap #mapid1 ($1) #mapid2 ($2) radius ($3)
+alias ^local_fitmap ~sel; ac mc; vop zone $2 sel $3 modelid 10000 minimalbounds true; fitmap $1 #10000; close #10000; close sel; modeldisplay $2</p>
+
+<p>alias ^local_diffmap_new savepos tmp; ~sel; ac mc; vop zone $2 sel $3 modelid 10000 minimalbounds true; vop zone $1 sel $3 modelid 10001 minimalbounds true; fitmap #10001 #10000; vop subtract #10001 #10000 modelid 10002 minrms true; split_diff_map #10002 #10003; volume #10003 step 1; close #10000,10001,10002; close sel; reset tmp</p>
+
+<p>alias ^local_correlation_aligned savepos tmp; ~sel; ac mc; vop zone $2 sel $3 modelid 10000 minimalbounds true; vop zone $1 sel $3 modelid 10001 minimalbounds true; fitmap #10001 #10000; vop localCorrelation #10001 #10000 modelid 10002; close #10000,10001; close sel; reset tmp</p>
+
+<p>#Set or unset crosshairs at center of rotation
+alias ^cofron set showcofr; cofr view; clip on
+alias ^cofroff ~set showcofr</p>
+
+<p>#Make volume blue mesh
+#Usage cootmode map_id
+alias ^cootmode volume $1 capfaces false style mesh meshlighting false squaremesh false color “#4bd97685f684” step 1; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1; background solid black; cofron</p>
+
+<p>#Usage cootmode_wire
+alias ^cootmode_wire ~rib; disp; color gold; color byhet; repr wire; setattr m lineWidth 2; volume # capfaces false style mesh meshlighting false squaremesh false color “#3333851effff” step 1; sop cap off; set depthCue; set dcStart 0.5; set dcEnd 0.7; background solid black; cofron; symclip 5</p>
+
+<p>#Usage cootmode_wire_white
+alias ^cootmode_wire_white ~rib; disp; color gold; color byhet; repr wire; setattr m lineWidth 2; volume # capfaces false style mesh meshlighting false squaremesh false color “#00000000cccc” step 1; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1; background solid white; cofron; symclip 5</p>
+
+<p>alias ^cootmode_off volume $1 style surface capfaces true color “cornflower blue”; sop cap on; background solid white</p>
+
+<p>alias ^cootmode_white volume $1 capfaces false style mesh meshlighting false squaremesh false color “navy blue” step 1; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1; background solid white; cofron</p>
+
+<p>#Makes binary mask for map at entered contour
+#Usage: binary_mask #map_id contour
+alias ^binary_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 modelID 2000; volume #2000 level 0.5</p>
+
+<h1 id="makes-binary-mask-at-given-threshold-then-applies-10-pixel-soft-edge">Makes binary mask at given threshold, then applies 10 pixel soft edge.</h1>
+<p>#Usage: soft_mask #map_id contour
+alias ^soft_mask vop threshold $1 minimum $2 set 0 maximum $2 setmaximum 1 modelID 2000; vop falloff #2000 iterations 20 modelID #2001; volume #2001 level 0.5; close #2000</p>
+
+<h1 id="adjust-clipping-symmetrically-around-the-center-of-rotation">adjust clipping symmetrically around the center of rotation</h1>
+<p>#Usage: symclip
+#alias symclip cofr view; clip on; clip hither $1 fromCenter true; clip yon -$1 fromCenter true
+alias symclip cofr view; cofr fixed; clip hither $1 fromCenter true; clip yon -$1 fromCenter true; cofr view; clip on</p>
+
+<p>#Show CA trace with sidechains 
+#Usage: ca_and_sidechains model_id
+alias ^ca_and_sidechains sel $1; namesel tmp; ~ribbon tmp; ~disp tmp; sel tmp&amp;@CA&amp;protein; repr stick sel; disp sel; sel tmp&amp;~protein; repr stick sel; disp sel;  setattr m stickScale 1.0 tmp;  sel side chain/base.without CA/C1’&amp;tmp; repr stick sel; disp sel; setattr b radius 0.1 sel; color byhet tmp; sel @CA|@CB; namesel tmp2; sel tmp&amp;tmp2; repr stick sel; setattr b radius 0.1 sel; sel @CD,N&amp;:pro&amp;tmp; disp sel; repr stick sel; setattr b radius 0.1 sel; ~sel</p>
+
+<p>#Show CA trace with sidechains
+#Usage: ca_and_sidechainsi_wire model_id
+alias ^ca_and_sidechains_wire sel $1; repr wire sel; namesel tmp; ~ribbon tmp; ~disp tmp; sel tmp&amp;@CA&amp;protein; repr wire sel; disp sel;  sel side chain/base.without CA/C1’&amp;tmp; repr wire sel; disp sel; color byhet tmp; sel @CA|@CB; namesel tmp2; sel tmp&amp;tmp2; repr wire sel; sel @CD,N&amp;:pro&amp;tmp; disp sel; repr wire sel; setattr m lineWidth 2; ~sel</p>
+
+<p>#Selects sidechains in selection (not including CA)
+#Usage: selside sel, selside :1-30, etc.
+alias ^selside sel side chain/base.without CA/C1’ &amp; $1</p>
+
+<p>alias ^dispside sel side chain/base.without CA/C1’ &amp; $1; disp sel</p>
+
+<p>alias ^dispside_sphere ~sel; ac mc; ~disp sel; sel sel z&lt;$1; sel side chain/base.with CA/C1’ &amp; sel; disp sel</p>
+
+<p>#Show smooth trace with sidechains
+alias ^ca_and_sidechains_smooth ~ribbon $1; ~disp $1; sel @CA&amp;protein; repr stick sel; disp sel; setattr M stickScale 1.0 $1;  sel side chain/base.without CA/C1’; repr stick sel; disp sel; setattr b radius 0.1 sel; color byhet $1; sel @CA|@CB; repr stick sel; setattr b radius 0.1 sel; sel @CD|@N&amp;:pro; disp sel; repr stick sel; setattr b radius 0.1 sel; ~sel; ribbon $1; ribscale licorice; ribspline spec $1 cardinal</p>
+
+<p>alias ^wire_ca ~rib $1; ~disp $1; repr wire $1; disp $1&amp;@CA&amp;protein</p>
+
+<p>alias ^wire_all ~rib $1; repr wire $1; disp $1; repr bs $1&amp;solvent; repr bs $1&amp;ions</p>
+
+<p>#Center on selected atoms and update CofR
+#Usage centersel
+#alias ^centersel focus; cofr view; clip hither 200 fromCenter true; clip yon -200 fromCenter true; center sel; cofr view; clip hither 10 fromCenter true; clip yon -10 fromCenter true; cofr sel; clip hither 10 fromCenter true; clip yon -10 fromCenter true; cofr view; set showcofr
+alias ^centersel cofr fixed; clip hither 300 fromCenter true; clip yon -300 fromCenter true; cofr view; clip on; center sel; cofr sel; cofr fixed; clip hither 10 fromCenter true; clip yon -10 fromCenter true; cofr view</p>
+
+<p>#Center on selected atoms and update CofR; create marker atom and select it
+#Usage centersel2
+alias ^centersel2 center sel; cofr sel; cofr view; set showcofr; ac mc</p>
+
+<h1 id="shows-sphere-of-density-of-selected-radius-around-center-of-rotation">shows sphere of density of selected radius around center of rotation</h1>
+<h1 id="usage-map_sphere-radius">Usage: map_sphere radius</h1>
+<p>alias ^map_sphere sel :unsel; ac mc; sop zone # sel $1; del sel; symclip $1
+alias ^map_sphere_off ~sop zone #</p>
+
+<p>#carve all maps to x A of sel
+alias ^carve sop zone # sel $1
+alias ^uncarve ~sop zone #</p>
+
+<h1 id="sets-map-to-xrms">Sets map to x*RMS</h1>
+<h1 id="usage-sig-map_id-rms">Usage: sig #map_id rms</h1>
+<p>alias ^map_sig volume $1 sdlevel $2</p>
+
+<p>alias ^diffmap_sig volume $1 rmsLevel -$2 color #da1200000000 rmsLevel $2 color #0000bda00000</p>
+
+<p>#Set diffmap to absolute +/- levels - useful if map has been sigma scaled and then cropped.
+alias ^diffmap_abs volume $1 level -$2 color #da1200000000 level $2 color #0000bda00000</p>
+
+<p>#Load pdb and associated maps from EDS</p>
+<h1 id="usage-load_pdb_and_maps-pdb_id">Usage: load_pdb_and_maps pdb_id</h1>
+<p>alias ^load_pdb_and_maps open 1000 $1; open 1001 edsID:$1; open 1002 edsdiffID:$1; cootmode_wire; map_sig #1001 1; diffmap_sig #1002 3</p>
+
+<p>#Extend map by one unit cell in each direction
+#Usage: extend_map #map_id
+alias ^extend_map vop cover $1 fbox -1,-1,-1,2,2,2</p>
+
+<p>#Make pipe for helix
+#Usage: pipe sel (or atom-spec)
+alias ^pipe sel sel&amp;@CA; define axis helicalcorrection true radius 3.0 $1</p>
+
+<p>#Place label here (at center of rotation).
+#Usage: label_here “label_text” (replace spaces with _; they will be spaces in label)
+alias label_here sel :unsel; ac mc; color black sel; repr bs sel; vdwdefine 0.01 sel; setattr a label $1 sel; transparency 100,a sel; sel :unsel</p>
+
+<p>#label selected atoms without recentering
+#Usage: label_sel “label_text”
+alias label_sel savepos tmp; center sel; cofr sel; ~sel; ac mc; color black sel; repr bs sel; vdwdefine 0.01 sel; setattr a label $1 sel; transparency 100,a sel; ~sel; reset tmp</p>
+
+<p>#label with x/y offset
+#Usage:label_x_offset “label_text” xA
+alias ^label_x_offset savepos label_x_offset_tmp; cofr view; clip on; center sel; cofr sel; ~sel; ac mc; namesel label_x_offset_tmp1; move x $2; cofr view; ac mc; namesel label_x_offset_tmp2; sel label_x_offset_tmp1 | label_x_offset_tmp2; color invisible sel; dist sel; setattr p label “” sel; setattr p drawMode 1 sel; sel label_x_offset_tmp2; label_sel $1;  sel label_x_offset_tmp1 | label_x_offset_tmp2; setattr p radius 0.1; reset label_x_offset_tmp; setattr p label “”</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>alias ^label_y_offset savepos label_y_offset_tmp; cofr view; clip on; center sel; cofr sel; ~sel; ac mc; namesel label_y_offset_tmp1; move y $2; cofr view; ac mc; namesel label_y_offset_tmp2; sel label_y_offset_tmp1</td>
+      <td>label_y_offset_tmp2; color invisible sel; dist sel; setattr p label “” sel; setattr p drawMode 1 sel; sel label_y_offset_tmp2; label_sel $1; sel label_y_offset_tmp1</td>
+      <td>label_y_offset_tmp2; setattr p radius 0.1; reset label_y_offset_tmp; setattr p label “”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>#hide selected axes
+#Usage: hide_axis
+alias ^hide_axis ~sel; ~modeldisp sel</p>
+
+<p>#show selected axes
+#Usage: show_axis
+alias ^show_axis ~sel; modeldisp sel</p>
+
+<p>#set window size to 720p
+#Usage: window_720p
+alias ^window_720p windowsize 1280 720</p>
+
+<p>#set window size to 1080p
+#Usage: window_1080p
+alias ^window_1080p windowsize 1920 1080</p>
+
+<p>#set window size to 480p
+#Usage: window_480p
+alias ^window_480p windowsize 640 480</p>
+
+<p>#Save session with maps. saves in home dir with directory name same as session.</p>
+<h1 id="usage-save_session_dir-session-name">Usage: save_session_dir session-name</h1>
+<h1 id="dont-use-spaces-or-under_scores-in-session-names-or-escape-underscors-like-_">Don’t use spaces or under_scores in session names (or escape underscors like: _).</h1>
+<p>alias ^save_session_dir  cd ~/Dropbox; system mkdir chimera_tmp; cd chimera_tmp; system mkdir packaged_sessions; cd packaged_sessions; system mkdir $1; volume # save ~/Dropbox/chimera_tmp/packaged_sessions/$1/$1%d.mrc; save ~/Dropbox/chimera_tmp/packaged_sessions/$1/$1; cd ~/Dropbox/chimera_tmp/packaged_sessions; system tar -zcvf $1.tar.gz $1</p>
+
+<p>#Makes thin yellow cylinder from CA of selection (intended for marking contacts)
+alias ^thin_axis define axis raiseTool false radius 0.1 color yellow sel&amp;@CA</p>
+
+<p>#Makes a pseudoprojection style view of the given volume
+#Usage: volume_project #map_id
+alias ^volume_project background solid black; volume $1 step 1 sdlevel 0,0 color white sdlevel 20,1 color white style solid projectionMode 3d maximumIntensityProjection true btCorrection true linearInterpolation true; unset depthCue</p>
+
+<p>alias ^volume_project_rainbow background solid black; volume $1 sdlevel 0,0.225 color red sdlevel 4,0.625 color orange sdlevel 8,0.825 color yellow sdlevel 12,0.925 color green sdlevel 16,0.975 color cyan sdlevel 20,1 color blue style solid btCorrection true linearInterpolation true maximumintensityprojection false projectionmode 3d; unset depthCue</p>
+
+<p>#Colors residues by modified Zappo coloring scheme (salmon, ILVAM; orange, FWY; blue, KRH; red, DE; green, STNQ; magenta, G; cyan, P; yellow, C; gray, unknown.)
+#Usage: zappo
+alias ^zappo sel :ile,leu,val,ala,met; color salmon sel; sel :phe,trp,tyr; color orange sel; sel :lys,arg,his; color #635EFF sel; sel :ser,thr,asn,gln; color  #00FF00 sel; sel :pro; color cyan sel; sel :gly; color magenta sel; sel :cys; color #FFFF00 sel; sel :asp,glu; color #FF0000 sel; sel :unk; color dim gray sel</p>
+
+<p>alias zapposel namesel tmp; sel :ile,leu,val,ala,met &amp; tmp; color salmon sel; sel :phe,trp,tyr &amp;tmp; color orange sel; sel :lys,arg,his &amp;tmp; color #635EFF sel; sel :ser,thr,asn,gln &amp;tmp; color  #00FF00 sel; sel :pro &amp;tmp; color cyan sel; sel :gly &amp;tmp; color magenta sel; sel :cys &amp;tmp; color #FFFF00 sel; sel :asp,glu&amp;tmp; color #FF0000 sel; sel :unk &amp;tmp; color dim gray sel</p>
+
+<p>#Makes cubic map of specified edge length and voxel size, centered on specified map, then resamples input map on this dummy map.
+#Usage: resample_dummy_map #map_id angpix edge_length
+alias ^resample_dummy_map center $1; cofr $1; ac mc; molmap sel 10 gridSpacing $2 edgepadding $3 modelID 1000; vop resample $1 ongrid #1000</p>
+
+<p>#Generates 50 A axis normal to and at center of screen.
+alias ^screen_axis cofr view; savepos tmp; ac mc; namesel z1; clip hither -50;clip yon -50;cofr view; ac mc; namesel z2; reset tmp; clip hither 50;clip yon 50; cofr view; ac mc; namesel z3; sel z1 | z2 | z3; define axis radius 0.5 sel; ~disp sel; reset tmp</p>
+
+<p>#add black residue labels to selection.
+#Usage: rlabel_black
+alias ^rlabel_black rlabel sel; color black,l sel</p>
+
+<h1 id="move-both-clip-planes-hither-or-yon">move both clip planes hither or yon.</h1>
+<h1 id="usage-zslab-x">Usage: zslab x</h1>
+<h1 id="move-hither-and-yon-clip-planes-towards-positive-or-away-negative">Move hither and yon clip planes towards (positive) or away (negative)</h1>
+<p>alias ^zslab clip hither $1; clip yon $1</p>
+
+<p>#pbond. Places black stick pseudobond between two selected atoms.
+#Usage: pbond
+alias ^pbond dist sel; setattr p label “” sel; setattr p drawMode 1 sel; setattr p radius 0.03 sel</p>
+
+<p>#pbond_label
+#Usage: pbond_label
+alias ^pbond_label dist sel; setattr p drawMode 1 sel; setattr p radius 0.03 sel</p>
+
+<p>#pbond_here. Use with single atom selected
+#Usage: pbond_here
+alias ^pbond_here ac mc; dist sel; setattr p label “” sel; setattr p drawMode 1 sel; setattr p radius 0.03 sel; sel sel&amp;~protein; color black sel; repr bs sel; vdwdefine 0.01 sel; transparency 100,a sel</p>
+:ET

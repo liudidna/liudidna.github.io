@@ -71,6 +71,8 @@ var foo = function(x) {
 foo(3)
 {% endhighlight %}
 
+Put the code inside `\{\% highlight javascript linenos \%\}` and `\{\% endhighlight \%\}`.
+
 ## Boxes
 You can add notification, warning and error boxes like this:
 

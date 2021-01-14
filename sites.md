@@ -27,6 +27,7 @@ title: My bookmarked sites
 ### <i class="fas fa-dna"></i> Science:
 - [Nature: DNA nano](https://www.nature.com/subjects/dna-nanotechnology){:target="_blank"}  
 - [PDB](https://www.rcsb.org/){:target="_blank"}  
+- [codecogs equation](https://codecogs.com/latex/eqneditor.php){:target="_blank"}
 
 ### <i class="fas fa-user-astronaut"></i> Science groups:
 - [Weizmann group](https://www.weizmann-group.com/){:target="_blank"}
@@ -55,7 +56,8 @@ title: My bookmarked sites
 - [Vanguard](https://investor.vanguard.com/home){:target="_blank"}  
 
 ### <i class="fas fa-ambulance"></i> COVID related:
-- [COVID data](https://coronavirus.1point3acres.com/zh){:target="_blank"}
+- [COVID statistics](https://coronavirus.1point3acres.com/zh){:target="_blank"}
+- [worldometers](https://www.worldometers.info/coronavirus/){:target="_blank"}
 - [MASS Reporting](https://www.mass.gov/info-details/covid-19-response-reporting){:target="_blank"}
 - [COLOR](https://home.color.com/covid/activation/ready-to-activate){:target="_blank"}
 - [Crimson Clear](https://crimsonclear.harvard.edu/harvard/start){:target="_blank"}  

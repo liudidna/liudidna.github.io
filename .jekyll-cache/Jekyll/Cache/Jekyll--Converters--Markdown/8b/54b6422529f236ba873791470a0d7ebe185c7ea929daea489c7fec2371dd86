@@ -1,4 +1,4 @@
-I"8«<p><a href="#top_title">
+I"1¯<p><a href="#top_title">
     <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
 </a></p>
 
@@ -14,6 +14,7 @@
   <li><a href="#center" id="markdown-toc-center">Center</a></li>
   <li><a href="#map3" id="markdown-toc-map3">Map3</a></li>
   <li><a href="#others" id="markdown-toc-others">Others</a></li>
+  <li><a href="#my-own" id="markdown-toc-my-own">My own</a></li>
 </ul>
 
 <p>This is for reference. The original file is from <a href="https://github.com/olibclarke/chimera-trimmings">olibclarke</a>.
@@ -52,13 +53,18 @@ More info on <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vol
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Normalizes map to rms and changes to blue mesh.</span>
 <span class="c">#Usage: normalize_to_rms #map_id_in #map_id_out</span>
 <span class="nb">alias</span> ^normalize_to_rms vop scale <span class="nv">$1</span> rms 1 modelID <span class="nv">$2</span><span class="p">;</span> close <span class="nv">$1</span><span class="p">;</span> volume <span class="nv">$2</span> capfaces <span class="nb">false </span>style mesh meshlighting <span class="nb">false </span>squaremesh <span class="nb">false </span>level 1 color <span class="c">#000000004bda; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1</span>
+<span class="c"># nrms #inmap_id #outmap_id</span>
+<span class="nb">alias</span> ^nrms vop scale <span class="nv">$1</span> rms 1 modelID <span class="nv">$2</span><span class="p">;</span> close <span class="nv">$1</span>
 
 <span class="c">#Normalizes map to rms and sets two contours, -3Xrms (red mesh) and 3Xrms (green mesh)</span>
 <span class="c">#Usage: split_diff_map #map_id_in #map_id_out</span>
 <span class="nb">alias</span> ^split_diff_map vop scale <span class="nv">$1</span> rms 1 modelID <span class="nv">$2</span><span class="p">;</span> close <span class="nv">$1</span><span class="p">;</span> volume <span class="nv">$2</span> capfaces <span class="nb">false </span>style mesh meshlighting <span class="nb">false </span>squaremesh <span class="nb">false </span>level <span class="nt">-3</span> color <span class="c">#da1200000000 level 3 color #0000bda00000; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1</span>
 
+<span class="c"># display, with #</span>
 <span class="nb">alias</span> ^display_only ~modeldisp <span class="c">#; modeldisp $1</span>
+<span class="nb">alias</span> ^do display_only
 <span class="nb">alias</span> ^display_all modeldisp <span class="c">#</span>
+<span class="nb">alias</span> ^da display_all
 
 <span class="nb">alias</span> ^toggle_display display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span><span class="p">;</span> <span class="nb">wait </span>50<span class="p">;</span> display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$1</span><span class="p">;</span> <span class="nb">wait  </span>50<span class="p">;</span> display_only <span class="nv">$2</span>
 
@@ -72,7 +78,6 @@ More info on <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vol
 <span class="nb">alias</span> ^helix setattr r isHelix <span class="nb">true </span>sel<span class="p">;</span> setattr r isSheet <span class="nb">false </span>sel
 <span class="nb">alias</span> ^strand setattr r isHelix <span class="nb">false </span>sel<span class="p">;</span> setattr r isSheet <span class="nb">true </span>sel
 <span class="nb">alias</span> ^coil setattr r isHelix <span class="nb">false </span>sel<span class="p">;</span> setattr r isSheet <span class="nb">false </span>sel
-
 
 <span class="c">#Fits selection to map.</span>
 <span class="c">#Usage: fitsel #map_id</span>
@@ -101,7 +106,6 @@ More info on <a href="https://www.cgl.ucsf.edu/chimera/docs/UsersGuide/midas/vol
 
 <span class="c">#Sets all maps to grid step 1</span>
 <span class="nb">alias</span> ^volstep1 volume <span class="c"># step 1</span>
-
 
 <span class="c">#Measure rotation between two domains.</span>
 <span class="c">#Usage: domain_rotation sel_for_domain1 sel_for_domain_2</span>
@@ -267,15 +271,17 @@ alias ^ca_and_sidechains_smooth ~ribbon $1; ~disp $1; sel @CA&amp;protein; repr 
 <span class="c">#set window size to 720p</span>
 <span class="c">#Usage: window_720p</span>
 <span class="nb">alias</span> ^window_720p windowsize 1280 720
+<span class="nb">alias</span> ^w720 window_720p
 
 <span class="c">#set window size to 1080p</span>
 <span class="c">#Usage: window_1080p</span>
 <span class="nb">alias</span> ^window_1080p windowsize 1920 1080
+<span class="nb">alias</span> ^w1080 window_1080p
 
 <span class="c">#set window size to 480p</span>
 <span class="c">#Usage: window_480p</span>
 <span class="nb">alias</span> ^window_480p windowsize 640 480
-
+<span class="nb">alias</span> ^w480 window_480p
 
 <span class="c">#Save session with maps. saves in home dir with directory name same as session.</span>
 <span class="c"># Usage: save_session_dir session-name</span>
@@ -328,5 +334,14 @@ alias ^ca_and_sidechains_smooth ~ribbon $1; ~disp $1; sel @CA&amp;protein; repr 
 <span class="c">#pbond_here. Use with single atom selected</span>
 <span class="c">#Usage: pbond_here</span>
 <span class="nb">alias</span> ^pbond_here ac mc<span class="p">;</span> dist sel<span class="p">;</span> setattr p label <span class="s2">""</span> sel<span class="p">;</span> setattr p drawMode 1 sel<span class="p">;</span> setattr p radius 0.03 sel<span class="p">;</span> sel sel&amp;~protein<span class="p">;</span> color black sel<span class="p">;</span> repr bs sel<span class="p">;</span> vdwdefine 0.01 sel<span class="p">;</span> transparency 100,a sel
+</code></pre></div></div>
+
+<h1 id="my-own">My own</h1>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># tiles</span>
+<span class="nb">alias</span> ^tiles tile <span class="nv">$1</span> spacingfactor <span class="nv">$2</span>
+
+
+<span class="c"># goto</span>
+<span class="nb">alias</span> ^goto <span class="k">select</span> <span class="nv">$1</span><span class="p">;</span> center sel
 </code></pre></div></div>
 :ET

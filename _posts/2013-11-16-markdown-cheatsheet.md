@@ -38,6 +38,7 @@ _(Not supported by DP)_
 `<span style="color:green" onMouseOver="this.style.color='red'; this.style.fontSize='2em';" onMouseOut="this.style.color='blue'; this.style.fontSize='1em'">some changing text</span>`  
 <span style="color:green" onMouseOver="this.style.color='red'; this.style.fontSize='2em';" onMouseOut="this.style.color='blue'; this.style.fontSize='1em'">some changing text</span>
 
+**keyboard keys**  
 `<kbd>Command</kbd> + <kbd class="">T</kbd>`  
 <kbd>Command</kbd> + <kbd class="">T</kbd>
 <!-- # some changing text {:style="color:green"} -->

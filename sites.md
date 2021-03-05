@@ -1,6 +1,7 @@
 ---
 layout: home
 title: My bookmarked sites
+tags: website
 # subtitle: 刘迪的主页
 ---
 # <i class="far fa-bookmark"></i> My bookmarked sites: {#top_title}
@@ -45,14 +46,23 @@ title: My bookmarked sites
 ### <i class="fas fa-users"></i> Social:
 - [知乎](https://www.zhihu.com/){:target="_blank"}
 - [Weibo](http://weibo.com/){:target="_blank"}  
+- [reddit](https://www.reddit.com/){:target="_blank"} 
+
+### <i class="fas fa-book-reader"></i> Literature:
+- [古诗文](https://www.gushiwen.org/){:target="_blank"}
+- [般若文海](http://www.bfnn.org/bookgb/index.html){:target="_blank"}
+- [金刚经](http://www.jingangjing.com/){:target="_blank"}
+- [红楼大观](http://book.5ilog.com/cgi-bin/mz/hlm/){:target="_blank"}
+- [诗选](http://www.xiexingcun.com/poet/index.htm){:target="_blank"}
 
 ### <i class="fa fa-university" aria-hidden="true"></i> Investment:
 - [雪球](https://xueqiu.com/){:target="_blank"}
 - [Yahoo finance](https://finance.yahoo.com/){:target="_blank"}
 - [Google finance](https://www.google.com/finance/){:target="_blank"}
 - [Longtermtrend's charts](https://www.longtermtrends.net/stocks-to-real-estate-ratio/){:target="_blank"}
-- [Dividend calendar](https://www.nasdaq.com/market-activity/dividends){:target="_blank"}
 - [Robinhood](https://robinhood.com/){:target="_blank"}
+- [Webull](https://www.webull.com/){:target="_blank"}
+- [TD Ameritrade](https://www.tdameritrade.com/home.page){:target="_blank"}
 - [Vanguard](https://investor.vanguard.com/home){:target="_blank"}  
 
 ### <i class="fas fa-ambulance"></i> COVID related:
@@ -113,6 +123,9 @@ title: My bookmarked sites
   </li>
   <li>
     <a href="#-social"><i class="fas fa-users"></i> Social:</a>
+  </li>
+  <li>
+    <a href="#-literature"><i class="fas fa-book-reader"></i> Literature:</a>
   </li>
   <li>
     <a href="#-investment"

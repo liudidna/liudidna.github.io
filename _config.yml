@@ -14,9 +14,8 @@ author: Di Liu
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Sites: "sites"
   About Me: "aboutme"
-  Posts: "posts"
+  tags: "tags"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"

@@ -1,4 +1,4 @@
-I"/<h2 id="top_title" class="no_toc">Contents</h2>
+I"8/<h2 id="top_title" class="no_toc">Contents</h2>
 
 <ol id="markdown-toc">
   <li><a href="#color-and-font-via-html-and-inline-css" id="markdown-toc-color-and-font-via-html-and-inline-css">Color and Font via HTML and inline CSS:</a></li>
@@ -39,7 +39,8 @@
 <p><code class="language-plaintext highlighter-rouge">&lt;span style="color:green" onMouseOver="this.style.color='red'; this.style.fontSize='2em';" onMouseOut="this.style.color='blue'; this.style.fontSize='1em'"&gt;some changing text&lt;/span&gt;</code><br />
 <span style="color:green" onmouseover="this.style.color='red'; this.style.fontSize='2em';" onmouseout="this.style.color='blue'; this.style.fontSize='1em'">some changing text</span></p>
 
-<p><code class="language-plaintext highlighter-rouge">&lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd class=""&gt;T&lt;/kbd&gt;</code><br />
+<p><strong>keyboard keys</strong><br />
+<code class="language-plaintext highlighter-rouge">&lt;kbd&gt;Command&lt;/kbd&gt; + &lt;kbd class=""&gt;T&lt;/kbd&gt;</code><br />
 <kbd>Command</kbd> + <kbd class="">T</kbd>
 <!-- # some changing text {:style="color:green"} --></p>
 

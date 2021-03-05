@@ -1,0 +1,7 @@
+I"c<p>Use <code class="language-plaintext highlighter-rouge">pgrep</code> and <code class="language-plaintext highlighter-rouge">kill</code> to kill processes in terminal.<br />
+For example, to kill all the processes of <strong>BetterTouchTool</strong>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -i to perform case-insensitive match</span>
+<span class="c"># kill -&lt;signal&gt; &lt;pid&gt;</span>
+pgrep <span class="nt">-i</span> bettertouchtool | xargs <span class="nb">kill</span> <span class="nt">-9</span>
+</code></pre></div></div>
+:ET

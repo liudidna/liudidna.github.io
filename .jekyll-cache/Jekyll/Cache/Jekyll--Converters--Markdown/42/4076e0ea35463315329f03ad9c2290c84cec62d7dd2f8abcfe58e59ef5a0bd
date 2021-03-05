@@ -1,4 +1,4 @@
-I"x<h1 id="top_title" class="no_toc"><i class="far fa-bookmark"></i> My bookmarked sites:</h1>
+I"0 <h1 id="top_title" class="no_toc"><i class="far fa-bookmark"></i> My bookmarked sites:</h1>
 
 <ul id="markdown-toc">
   <li><a href="#-commonly-used-sites" id="markdown-toc--commonly-used-sites"><i class="fab fa-angellist"></i> Commonly used sites:</a></li>
@@ -6,6 +6,7 @@
   <li><a href="#-science-groups" id="markdown-toc--science-groups"><i class="fas fa-user-astronaut"></i> Science groups:</a></li>
   <li><a href="#-learning" id="markdown-toc--learning"><i class="fas fa-user-graduate"></i> Learning:</a></li>
   <li><a href="#-social" id="markdown-toc--social"><i class="fas fa-users"></i> Social:</a></li>
+  <li><a href="#-literature" id="markdown-toc--literature"><i class="fas fa-book-reader"></i> Literature:</a></li>
   <li><a href="#-investment" id="markdown-toc--investment"><i class="fa fa-university" aria-hidden="true"></i> Investment:</a></li>
   <li><a href="#-covid-related" id="markdown-toc--covid-related"><i class="fas fa-ambulance"></i> COVID related:</a></li>
   <li><a href="#-shopping" id="markdown-toc--shopping"><i class="fas fa-shopping-cart"></i> Shopping:</a></li>
@@ -33,6 +34,7 @@
 <ul>
   <li><a href="https://www.nature.com/subjects/dna-nanotechnology" target="_blank">Nature: DNA nano</a></li>
   <li><a href="https://www.rcsb.org/" target="_blank">PDB</a></li>
+  <li><a href="https://codecogs.com/latex/eqneditor.php" target="_blank">codecogs equation</a></li>
 </ul>
 
 <h3 id="-science-groups"><i class="fas fa-user-astronaut"></i> Science groups:</h3>
@@ -56,6 +58,16 @@
 <ul>
   <li><a href="https://www.zhihu.com/" target="_blank">知乎</a></li>
   <li><a href="http://weibo.com/" target="_blank">Weibo</a></li>
+  <li><a href="https://www.reddit.com/" target="_blank">reddit</a></li>
+</ul>
+
+<h3 id="-literature"><i class="fas fa-book-reader"></i> Literature:</h3>
+<ul>
+  <li><a href="https://www.gushiwen.org/" target="_blank">古诗文</a></li>
+  <li><a href="http://www.bfnn.org/bookgb/index.html" target="_blank">般若文海</a></li>
+  <li><a href="http://www.jingangjing.com/" target="_blank">金刚经</a></li>
+  <li><a href="http://book.5ilog.com/cgi-bin/mz/hlm/" target="_blank">红楼大观</a></li>
+  <li><a href="http://www.xiexingcun.com/poet/index.htm" target="_blank">诗选</a></li>
 </ul>
 
 <h3 id="-investment"><i class="fa fa-university" aria-hidden="true"></i> Investment:</h3>
@@ -64,8 +76,9 @@
   <li><a href="https://finance.yahoo.com/" target="_blank">Yahoo finance</a></li>
   <li><a href="https://www.google.com/finance/" target="_blank">Google finance</a></li>
   <li><a href="https://www.longtermtrends.net/stocks-to-real-estate-ratio/" target="_blank">Longtermtrend’s charts</a></li>
-  <li><a href="https://www.nasdaq.com/market-activity/dividends" target="_blank">Dividend calendar</a></li>
   <li><a href="https://robinhood.com/" target="_blank">Robinhood</a></li>
+  <li><a href="https://www.webull.com/" target="_blank">Webull</a></li>
+  <li><a href="https://www.tdameritrade.com/home.page" target="_blank">TD Ameritrade</a></li>
   <li><a href="https://investor.vanguard.com/home" target="_blank">Vanguard</a></li>
 </ul>
 
@@ -128,6 +141,9 @@
   </li>
   <li>
     <a href="#-social"><i class="fas fa-users"></i> Social:</a>
+  </li>
+  <li>
+    <a href="#-literature"><i class="fas fa-book-reader"></i> Literature:</a>
   </li>
   <li>
     <a href="#-investment"><i class="fa fa-university" aria-hidden="true"></i> Investment:</a>

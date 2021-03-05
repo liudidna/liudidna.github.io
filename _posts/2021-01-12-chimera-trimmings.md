@@ -52,13 +52,18 @@ alias ^pride_rainbow_helix rainbow helix "#BC00FF","#4A0082","#0000FF","#128301"
 #Normalizes map to rms and changes to blue mesh.
 #Usage: normalize_to_rms #map_id_in #map_id_out
 alias ^normalize_to_rms vop scale $1 rms 1 modelID $2; close $1; volume $2 capfaces false style mesh meshlighting false squaremesh false level 1 color #000000004bda; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1
+# nrms #inmap_id #outmap_id
+alias ^nrms vop scale $1 rms 1 modelID $2; close $1
 
 #Normalizes map to rms and sets two contours, -3Xrms (red mesh) and 3Xrms (green mesh)
 #Usage: split_diff_map #map_id_in #map_id_out
 alias ^split_diff_map vop scale $1 rms 1 modelID $2; close $1; volume $2 capfaces false style mesh meshlighting false squaremesh false level -3 color #da1200000000 level 3 color #0000bda00000; sop cap off; set depthCue; set dcStart 0.2; set dcEnd 1
 
+# display, with #
 alias ^display_only ~modeldisp #; modeldisp $1
+alias ^do display_only
 alias ^display_all modeldisp #
+alias ^da display_all
 
 alias ^toggle_display display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait 50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2; wait  50; display_only $1; wait  50; display_only $2
 
@@ -72,7 +77,6 @@ alias ^aa activate_all
 alias ^helix setattr r isHelix true sel; setattr r isSheet false sel
 alias ^strand setattr r isHelix false sel; setattr r isSheet true sel
 alias ^coil setattr r isHelix false sel; setattr r isSheet false sel
-
 
 #Fits selection to map.
 #Usage: fitsel #map_id
@@ -102,7 +106,6 @@ alias ^copysel_single_model write selected $1 ~/tmp.pdb ; open ~/tmp.pdb
 
 #Sets all maps to grid step 1
 alias ^volstep1 volume # step 1
-
 
 #Measure rotation between two domains.
 #Usage: domain_rotation sel_for_domain1 sel_for_domain_2
@@ -273,15 +276,17 @@ alias ^show_axis ~sel; modeldisp sel
 #set window size to 720p
 #Usage: window_720p
 alias ^window_720p windowsize 1280 720
+alias ^w720 window_720p
 
 #set window size to 1080p
 #Usage: window_1080p
 alias ^window_1080p windowsize 1920 1080
+alias ^w1080 window_1080p
 
 #set window size to 480p
 #Usage: window_480p
 alias ^window_480p windowsize 640 480
-
+alias ^w480 window_480p
 
 #Save session with maps. saves in home dir with directory name same as session.
 # Usage: save_session_dir session-name
@@ -335,4 +340,14 @@ alias ^pbond_label dist sel; setattr p drawMode 1 sel; setattr p radius 0.03 sel
 #pbond_here. Use with single atom selected
 #Usage: pbond_here
 alias ^pbond_here ac mc; dist sel; setattr p label "" sel; setattr p drawMode 1 sel; setattr p radius 0.03 sel; sel sel&~protein; color black sel; repr bs sel; vdwdefine 0.01 sel; transparency 100,a sel
+```
+
+# My own
+```bash
+# tiles
+alias ^tiles tile $1 spacingfactor $2
+
+
+# goto
+alias ^goto select $1; center sel
 ```

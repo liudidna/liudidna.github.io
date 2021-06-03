@@ -30,6 +30,9 @@ Clear the entirety of the line before the cursor.
 <kbd>Control</kbd> + <kbd>K</kbd>:  
 Clear the entirety of the line after the cursor.
 
+<kbd>Control</kbd> + <kbd>Y</kbd>:  
+Paste the last deleted things by <kbd>Control</kbd> + <kbd>W</kbd>/<kbd>U</kbd>/<kbd>K</kbd>.
+
 <kbd>esc</kbd> + <kbd>T</kbd>:  
 Swap the two words that appear immediately before the cursor. So, if "this is" sits before the cursor, using Escape and T will change that to "is this."
 

@@ -347,7 +347,9 @@ alias ^pbond_here ac mc; dist sel; setattr p label "" sel; setattr p drawMode 1 
 # tiles
 alias ^tiles tile $1 spacingfactor $2
 
-
 # goto
 alias ^goto select $1; center sel
+
+# fitmap, $1 is pdb, $2 is map
+alias ^fm fitmap $1 $2 search 1000 radius 5
 ```

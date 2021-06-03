@@ -26,6 +26,13 @@ tags: research RNA pdb python C++
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `edit_pdb_atom.py`: parse and edit PDB files
 - Access `edit_pdb_atom.py` by the [link](https://www.dropbox.com/s/b712mcc35a0kc9z/edit_pdb_atom.py?dl=0){:target="_blank"};
 - It is used to parse pdb files, mainly for being imported of other scripts: so consider adding the directory containing it to `PYTHONPATH` by `export PYTHONPATH=$PYTHONPATH:PATH_TO_THE_DIRECTORY`, or use `sys.path.append("PATH_TO_THE_DIRECTORY")`;
+- PDB record: I is int, S is string, F is float;
+- 
+  | Record  | recordName | serial     | name             | resName          | chainID         | resSeq      | x           | y           | z           |
+  |---------|------------|------------|------------------|------------------|-----------------|-------------|-------------|-------------|-------------|
+  | Type    | String(6)  | String(5)  | String(4)        | String(3)        | String(1)       | Integer(4)  | Real(8.3)   | Real(8.3)   | Real(8.3)   |
+  | Get     | S[:6]      | I(S[6:11]) | S[12:16].strip() | S[17:20].strip() | S[21] (?S[20]?) | I(S[22:26]) | F(S[30:38]) | F(S[38:46]) | F(S[46:54]) |
+  | Example | HETATM     |     2      |   PB             | GTP              |  X              |   10        |             |             |             |
 - It contains:
   - class `pdb_atom_record`
   - class `pdb_ter_record` (inherited from `pdb_atom_record`) 
@@ -76,14 +83,29 @@ tags: research RNA pdb python C++
 - Access `add_phosphate_pdb.py` by the [link](https://www.dropbox.com/s/ik90nozp48040wr/add_phosphate_pdb.py?dl=0){:target="_blank"};
 - Use by `python add_phosphate_pdb.py PDBfile_name`;
 - Operations:
-  1. It first moves an ideal nucleotide (*"sample_nt"*) so that it is aligned with the 5'-nucleotide (*"curr_head_res"*) based on *"C5'", "O4'", "C4'", "C1'", "O5'"*; 
-  2. Then, the moved *"sample_nt"* is slightly moved so that its "O5'" is aligned with that of *"curr_head_res"* with the movement matrix reported to console for evaluation; 
-  3. Lastly, the phosphate of *"sample_nt"* is grafted onto *"curr_head_res"*.
+  1. It first moves an ideal nucleotide (*"sample_nt"*) so that it is aligned with the 5'-nucleotide (*"curr_head_res"*) based on *"C5'", "O4'", "C4'", "C1'"* ("O5'" is not necessary, though it can be added by using [pdbfixer](https://github.com/openmm/pdbfixer){:target="_blank"} ); 
+  2. Then, the moved *"sample_nt"* is slightly moved so that its "C5'" is aligned with that of *"curr_head_res"* with the movement matrix reported to console for evaluation; 
+  3. Extra "O5'" atoms will be deleted; 
+  4. Lastly, the phosphate of *"sample_nt"* is grafted onto *"curr_head_res"*.
 - The output PDB file has the serials reordered.
 - <i class="far fa-comment-dots"></i> ***Coding notes:***
   - `import numpy as np`, to use the `np.array()` function to create `ndarray`, to use `np.matmul()` function for matrix product, and to use `tolist()` method of `ndarray`;
   - `copy.deepcopy(some_instance)` from `copy` module;
   - `superpose3d.Superpose3D(frozen_cloud, mobile_cloud)` from `superpose3d` module: the function returns `(RMSD, R, T, c)`, [more details here](https://pypi.org/project/superpose3d/){:target="_blank"}.
+
+### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> 3 related scripts: (a) `add_triphosphate_pdb.py`: add 5'-triphosphate, (b) `add_cyclicphosphate_pdb.py`: add 2',3'-cyclic phosphate, and (c) `remove_extraphosphate_pdb.py`: remove 5'-triphosphate or 2',3'-cyclic phosphate
+- Access `add_triphosphate_pdb.py` by the [link](https://www.dropbox.com/s/5zq14t0w1u6ybos/add_triphosphate_pdb.py?dl=0){:target="_blank"}, and use by `python add_triphosphate_pdb.py PDBfile_name chainID1 chainID2 ...`;
+- Access `add_cyclicphosphate_pdb.py` by the [link](https://www.dropbox.com/s/djcwcciktaglebx/add_cyclicphosphate_pdb.py?dl=0){:target="_blank"}, and use by `add_cyclicphosphate_pdb.py PDBfile_name chainID1 chainID2 ...`;
+- A current limitation with `add_cyclicphosphate_pdb.py` is that the chainID of the input PDB file should be ordered;
+- Access `remove_extraphosphate_pdb.py` by the [link](https://www.dropbox.com/s/o826vcld860vv0y/remove_extraphosphate_pdb.py?dl=0){:target="_blank"}, and use by `remove_extraphosphate_pdb.py PDBfile_name`;
+- The three scripts work in a similar with as the `add_phosphate_pdb.py` [above](#--add_phosphate_pdbpy-add-5-end-phosphates-to-rna-strands).
+- <i class="far fa-comment-dots"></i> ***Coding notes:***
+  - To merge two dictionaries: 
+    ```python
+    resName_change = resName_triphosphate_change.copy()
+    resName_change.update(resName_cyclicphosphate_change)
+    ``` 
+  - [more details from stackoverflow](https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-taking-union-of-dictiona#){:target="_blank"}.
 
 ### <i class="fas fa-terminal"></i> `convertPDB`: shell script for PDB format conversion
 - Access `convertPDB` by the [link](https://www.dropbox.com/s/fkm339n6qfb2hvf/convertPDB?dl=0){:target="_blank"} or [preview as text](https://www.dropbox.com/s/ovnp2rid9nvcpg6/convertPDB.sh?dl=0){:target="_blank"};
@@ -131,13 +153,49 @@ tags: research RNA pdb python C++
 ## Related to USCF Chimera
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `transfer_savepos_chimera.py`: transfer Chimera `savepos` positions
 - Access `transfer_savepos_chimera.py` by the [link](https://www.dropbox.com/s/tsyx2e3h9vxx072/transfer_savepos_chimera.py?dl=0){:target="_blank"};
-- Use by `python transfer_savepos_chimera.py from-filename to-filename`, while ***from-file*** must exist, ***to-file*** with `to-filename` will be created if not existing;
+- Use by `python transfer_savepos_chimera.py from-filename to-filename` to reorder records, while ***from-file*** must exist, ***to-file*** with `to-filename` will be created if not existing;
 - The script looks for the line starting with `"\tformattedPositions = "` to locate the **dictionary** of the saved positions (note that for a Chimera session (`.py`) file with no `savepos`, `formattedPositions = {}` exists in the `.py` file);
 - <i class="far fa-comment-dots"></i> ***Coding notes:***
   - `target_frompos = ast.literal_eval(target_frompos_string)`: `literal_eval()` function from `ast` module to convert strings to Python literal structures;
   - `if 'tolines' not in locals():` to check whether ( or not) the variable has been defined, *i.e.* `locals()` function returns the dictionary of current local symbol table.
 
 ### <i class="fab fa-cuttlefish"></i> `compare_chimera_swapna.cpp` need to convert from C++ to python3
+
+## Related to Phenix
+### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `phenix_na_ss.py`: create the class for storing records of [secondary structure restraints of Phenix](https://phenix-online.org/documentation/reference/secondary_structure.html){:target="_blank"} and reorder these records
+- Access `phenix_na_ss.py` by the [link](https://www.dropbox.com/s/54a7iumd3j1ne9m/phenix_na_ss.py?dl=0){:target="_blank"};
+- Use by `python phenix_na_ss.py from-filename to-filename`, while ***from-file*** must exist, ***to-file*** with `to-filename` will be created;
+- `class base_pair_record` and `class stacking_pair_record` is created by 3 or 2 lines of the records in file:
+  ```python
+  pdb_interpretation {
+    secondary_structure {
+      nucleic_acid {
+        base_pair {
+          base1 = chain 'A' and resid 372
+          base2 = chain 'A' and resid 399
+          saenger_class = 20 # 19 for GC, 20 for AU, 28 for GU
+        }
+        stacking_pair {
+          base1 = chain 'A' and resid 417
+          base2 = chain 'A' and resid 418
+        }
+      }
+      enabled = True
+    }
+  }
+  ```
+- <i class="far fa-comment-dots"></i> ***Coding notes:***
+  - **tuples** can be compared, such as `if (self.base1["chain"], self.base1["resid"]) > (self.base2["chain"], self.base2["resid"]):`;
+  - **tuples** can be used as the `key` for `sorted()`, such as `sorted(record_list, key=lambda x: (x.base1["chain"], x.base1["resid"]))`.
+
+### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `phenix_res_from_seq_ss.py`: convert secondary structure denotations to Phenix secondary structure restraints
+- Access `phenix_res_from_seq_ss.py` by the [link](https://www.dropbox.com/s/8fmkbve1ubft34g/phenix_res_from_seq_ss.py?dl=0){:target="_blank"};
+- Use by `python phenix_res_from_seq_ss.py seq_file ss_file out_file`, where `seq_file` and `ss_file` are **SimRNA** sequence file and secondary-structure file;
+- The script is dependent on [`get_sticky_from_seq_ss.py`](#-get_sticky_from_seq_sspy-create-stacking-restraints-for-simrna) and [`phenix_na_ss.py`](#--phenix_na_sspy-create-the-class-for-storing-records-of-secondary-structure-restraints-of-phenix-and-reorder-these-records).
+- <i class="far fa-comment-dots"></i> ***Coding notes:***
+  - Even use `from file_other improt some_function`, all the codes in `file_other` will be executed, solution is `if __name__ == '__main__':`;
+  - Directly assigning a new value to an object such as `list` in function will not change its value outside of the function, solution is `return`.
+
 
 ## Other
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `ranking_energy_nanotiler.py`: post-process Nanotiler output log files

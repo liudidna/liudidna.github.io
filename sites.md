@@ -29,6 +29,7 @@ tags: website
 - [Nature: DNA nano](https://www.nature.com/subjects/dna-nanotechnology){:target="_blank"}  
 - [PDB](https://www.rcsb.org/){:target="_blank"}  
 - [codecogs equation](https://codecogs.com/latex/eqneditor.php){:target="_blank"}
+- [Endnote Click](https://click.endnote.com/locker){:target="_blank"}
 
 ### <i class="fas fa-user-astronaut"></i> Science groups:
 - [Weizmann group](https://www.weizmann-group.com/){:target="_blank"}
@@ -60,6 +61,7 @@ tags: website
 - [Yahoo finance](https://finance.yahoo.com/){:target="_blank"}
 - [Google finance](https://www.google.com/finance/){:target="_blank"}
 - [Longtermtrend's charts](https://www.longtermtrends.net/stocks-to-real-estate-ratio/){:target="_blank"}
+- [ARKK](https://ark-funds.com/arkk){:target="_blank"}
 - [Robinhood](https://robinhood.com/){:target="_blank"}
 - [Webull](https://www.webull.com/){:target="_blank"}
 - [TD Ameritrade](https://www.tdameritrade.com/home.page){:target="_blank"}

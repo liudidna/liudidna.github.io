@@ -1,4 +1,4 @@
-I"g	<h2 id="moving">Moving</h2>
+I"�	<h2 id="moving">Moving</h2>
 <p><kbd>Option</kbd> + <kbd>Left</kbd> / <kbd>Right</kbd>:<br />
 Move the cursor between separate words in a command line.</p>
 
@@ -20,6 +20,9 @@ Clear the entirety of the line before the cursor.</p>
 
 <p><kbd>Control</kbd> + <kbd>K</kbd>:<br />
 Clear the entirety of the line after the cursor.</p>
+
+<p><kbd>Control</kbd> + <kbd>Y</kbd>:<br />
+Paste the last deleted things by <kbd>Control</kbd> + <kbd>W</kbd>/<kbd>U</kbd>/<kbd>K</kbd>.</p>
 
 <p><kbd>esc</kbd> + <kbd>T</kbd>:<br />
 Swap the two words that appear immediately before the cursor. So, if “this is” sits before the cursor, using Escape and T will change that to “is this.”</p>

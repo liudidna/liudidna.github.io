@@ -1,0 +1,34 @@
+I"$	<h1 id="1-transfer-fonts-from-windows-to-mac">1. Transfer fonts from Windows to Mac</h1>
+<h2 id="11-find-fonts-in-windows">1.1 Find fonts in Windows</h2>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Control Panel</code> -&gt; <code class="language-plaintext highlighter-rouge">Appearance and Personalization</code> -&gt; <code class="language-plaintext highlighter-rouge">Fonts</code></li>
+  <li>Copy the Fonts</li>
+</ol>
+
+<p><a href="https://answers.microsoft.com/en-us/msoffice/forum/msoffice_other-mso_mac-mso_mac2011/how-to-transfer-fonts-from-a-pc-to-a-mac/cc7a944b-5ab0-4161-8544-7c36c92a0978" target="_blank">reference from windows</a></p>
+
+<h2 id="12-install-fonts-in-mac">1.2 Install fonts in Mac</h2>
+<ol>
+  <li>Open <code class="language-plaintext highlighter-rouge">Font book</code> app</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">+</code> to install</li>
+</ol>
+
+<p><a href="https://support.apple.com/en-us/HT201749" target="_blank">reference from mac</a></p>
+
+<h2 id="13-change-font-title">1.3 Change font title</h2>
+<ol>
+  <li>Use online <a href="http://www.glyphrstudio.com/online/" target="_blank">Glyphrstudio</a> font editor and upload the font</li>
+  <li>In <code class="language-plaintext highlighter-rouge">Font Settings</code>, change the <code class="language-plaintext highlighter-rouge">Font Name</code></li>
+  <li>Export</li>
+</ol>
+
+<p><a href="https://stackoverflow.com/questions/5930217/how-do-i-change-a-fonts-metadata-specifically-a-title/53427523" target="_blank">reference from stackoverflow</a></p>
+
+<h1 id="2-use-windows-mathtype-equations-in-mac-adobe-illustrator">2. Use Windows Mathtype equations in Mac Adobe Illustrator</h1>
+<ol>
+  <li>Export <strong>Windows Mathtype</strong> equations in <code class="language-plaintext highlighter-rouge">.eps</code> file</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">.eps</code> file in <strong>Windows Adobe Illustrator</strong>, save as <code class="language-plaintext highlighter-rouge">.ai</code> file</li>
+  <li>Open the <code class="language-plaintext highlighter-rouge">.ai</code> file in <strong>Mac Adobe Illustrator</strong>, replace the font (<code class="language-plaintext highlighter-rouge">SymbolMT</code>) with <code class="language-plaintext highlighter-rouge">Symbol</code></li>
+</ol>
+
+:ET

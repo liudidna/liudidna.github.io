@@ -34,7 +34,8 @@ This RNA knot is expected to be of **C<sub>3</sub>** symmetry. The following ima
     ```
     <br>
 3.  Operations in **UCSF Chimera**:
-   Open the three newly generated PDB files in **UCSF Chimera** and rotate to align by `match` to **model #0**: `match #1 #0` and `match #2 #0`. Then output the three structures as PDB file with coordinates relative to **model #0**, with filenames such as `TJKnot-opt-39-26-B20000000_sym1.pdb`, `TJKnot-opt-39-26-B20000000_sym2.pdb` and `TJKnot-opt-39-26-B20000000_sym3.pdb`. **Note** that even the coordinates of first PDB file have not been changed, it is safe to save it with **Chimera** so that all the files going into `average_structure_pdb_atom.py` (next step) are of the same format, especially for the "TER" records. It is on my to-do list to improve `average_structure_pdb_atom.py` to make it check the identity of the atoms to be averaged.
+   Open the three newly generated PDB files in **UCSF Chimera** and rotate to align by `match` to **model #0**: `match #1 #0` and `match #2 #0`. Then output the three structures as PDB file with coordinates relative to **model #0**, with filenames such as `TJKnot-opt-39-26-B20000000_sym1.pdb`, `TJKnot-opt-39-26-B20000000_sym2.pdb` and `TJKnot-opt-39-26-B20000000_sym3.pdb`. **Note** that even the coordinates of first PDB file have not been changed, it is safe to save it with **Chimera** so that all the files going into `average_structure_pdb_atom.py` (next step) are of the same format, especially for the "TER" records. It is on my to-do list to improve `average_structure_pdb_atom.py` to make it check the identity of the atoms to be averaged.  
+   **Note**: for certain symmetry, bases may need to be changed by, such as `swapna G #1:*.Q` in **UCSF Chimera**, see [also](/2021-09-09-often-viewed-files/#pymol-or-chimera-commands){:target="_blank"}.
    <br>
 
 4.  Use `average_structure_pdb_atom.py` to generate average coordinates:

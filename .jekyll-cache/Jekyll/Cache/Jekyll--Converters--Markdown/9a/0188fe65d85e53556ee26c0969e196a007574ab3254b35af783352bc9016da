@@ -1,9 +1,10 @@
-I"� <h1 id="top_title" class="no_toc"><i class="far fa-bookmark"></i> My bookmarked sites:</h1>
+I"%<h1 id="top_title" class="no_toc"><i class="far fa-bookmark"></i> My bookmarked sites:</h1>
 
 <ul id="markdown-toc">
   <li><a href="#-commonly-used-sites" id="markdown-toc--commonly-used-sites"><i class="fab fa-angellist"></i> Commonly used sites:</a></li>
   <li><a href="#-science" id="markdown-toc--science"><i class="fas fa-dna"></i> Science:</a></li>
   <li><a href="#-science-groups" id="markdown-toc--science-groups"><i class="fas fa-user-astronaut"></i> Science groups:</a></li>
+  <li><a href="#-writing" id="markdown-toc--writing"><i class="fas fa-pencil-alt"></i> Writing:</a></li>
   <li><a href="#-learning" id="markdown-toc--learning"><i class="fas fa-user-graduate"></i> Learning:</a></li>
   <li><a href="#-social" id="markdown-toc--social"><i class="fas fa-users"></i> Social:</a></li>
   <li><a href="#-literature" id="markdown-toc--literature"><i class="fas fa-book-reader"></i> Literature:</a></li>
@@ -28,23 +29,33 @@
   <li><a href="https://www.youtube.com/" target="_blank">Youtube</a></li>
   <li><a href="https://www.bilibili.com/" target="_blank">Bilibili</a></li>
   <li><a href="https://scholar.google.com/schhp?hl=en&amp;as_sdt=0,14" target="_blank">Google Scholar</a></li>
+  <li><a href="https://mail.med.harvard.edu/" target="_blank">Harvard Mail</a></li>
 </ul>
 
 <h3 id="-science"><i class="fas fa-dna"></i> Science:</h3>
 <ul>
+  <li><a href="https://www.rsc.org/periodic-table" target="_blank">Periodic Table</a></li>
   <li><a href="https://www.nature.com/subjects/dna-nanotechnology" target="_blank">Nature: DNA nano</a></li>
   <li><a href="https://www.rcsb.org/" target="_blank">PDB</a></li>
   <li><a href="https://codecogs.com/latex/eqneditor.php" target="_blank">codecogs equation</a></li>
   <li><a href="https://click.endnote.com/locker" target="_blank">Endnote Click</a></li>
+  <li><a href="/2021-09-09-often-viewed-files" target="_blank">Often viewed…</a></li>
 </ul>
 
 <h3 id="-science-groups"><i class="fas fa-user-astronaut"></i> Science groups:</h3>
 <ul>
   <li><a href="https://www.weizmann-group.com/" target="_blank">Weizmann group</a></li>
   <li><a href="https://voices.uchicago.edu/piccirillilab/lab-members/" target="_blank">Piccirlli group</a></li>
+  <li><a href="https://eric-westhof.ibmc.cnrs.fr/" target="_blank">Eric Westhof</a></li>
   <li><a href="https://yin.hms.harvard.edu/publications.html" target="_blank">Yin group</a></li>
   <li><a href="https://liao.hms.harvard.edu/documentation" target="_blank">Liao group</a></li>
   <li><a href="#" target="_blank">More…</a></li>
+</ul>
+
+<h3 id="-writing"><i class="fas fa-pencil-alt"></i> Writing:</h3>
+<ul>
+  <li><a href="https://www.thesaurus.com/" target="_blank">Thesaurus</a></li>
+  <li><a href="https://www.rapidtables.com/math/symbols/greek_alphabet.html" target="_blank">Greek alphabet</a></li>
 </ul>
 
 <h3 id="-learning"><i class="fas fa-user-graduate"></i> Learning:</h3>
@@ -82,11 +93,13 @@
   <li><a href="https://www.webull.com/" target="_blank">Webull</a></li>
   <li><a href="https://www.tdameritrade.com/home.page" target="_blank">TD Ameritrade</a></li>
   <li><a href="https://investor.vanguard.com/home" target="_blank">Vanguard</a></li>
+  <li><a href="https://www.zacks.com/portfolios/my-stock-portfolio/?icid=stocks-stocks-nav_tracking-zcom-main_menu_wrapper-my_portfolio" target="_blank">Zacks</a></li>
 </ul>
 
 <h3 id="-covid-related"><i class="fas fa-ambulance"></i> COVID related:</h3>
 <ul>
-  <li><a href="https://coronavirus.1point3acres.com/zh" target="_blank">COVID statistics</a></li>
+  <li><a href="https://coronavirus.1point3acres.com/zh" target="_blank">COVID statistics-1.3</a></li>
+  <li><a href="https://coronavirus.jhu.edu/data/new-cases" target="_blank">COVID statistics-JHU</a></li>
   <li><a href="https://www.worldometers.info/coronavirus/" target="_blank">worldometers</a></li>
   <li><a href="https://www.mass.gov/info-details/covid-19-response-reporting" target="_blank">MASS Reporting</a></li>
   <li><a href="https://home.color.com/covid/activation/ready-to-activate" target="_blank">COLOR</a></li>
@@ -137,6 +150,9 @@
   </li>
   <li>
     <a href="#-science-groups"><i class="fas fa-user-astronaut"></i> Science groups:</a>
+  </li>
+  <li>
+    <a href="#-writing"><i class="fas fa-pencil-alt"></i> Writing:</a>
   </li>
   <li>
     <a href="#-learning"><i class="fas fa-user-graduate"></i> Learning:</a>

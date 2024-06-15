@@ -26,7 +26,7 @@ tags: research RNA pdb python C++
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `edit_pdb_atom.py`: parse and edit PDB files
 - Access `edit_pdb_atom.py` by the [link](https://www.dropbox.com/s/b712mcc35a0kc9z/edit_pdb_atom.py?dl=0){:target="_blank"};
 - It is used to parse pdb files, mainly for being imported of other scripts: so consider adding the directory containing it to `PYTHONPATH` by `export PYTHONPATH=$PYTHONPATH:PATH_TO_THE_DIRECTORY`, or use `sys.path.append("PATH_TO_THE_DIRECTORY")`;
-- PDB record: I is int, S is string, F is float;
+- PDB record: **I** is int, **S** is string, **F** is float;
 - 
   | Record  | recordName | serial     | name             | resName          | chainID         | resSeq      | x           | y           | z           |
   |---------|------------|------------|------------------|------------------|-----------------|-------------|-------------|-------------|-------------|
@@ -59,7 +59,8 @@ tags: research RNA pdb python C++
 ### <i class="fab fa-python"></i> `reorder_pdb_atom_by_chain.py`: reorder the records of atoms based on the alphabetic order of chainIDs
 - Access `reorder_pdb_atom_by_chain.py` by the [link](https://www.dropbox.com/s/8bb08e2g1kulo80/reorder_pdb_atom_by_chain.py?dl=0){:target="_blank"};
 - Use by `python reorder_pdb_atom_by_chain.py file.pdb` or `python reorder_pdb_atom_by_chain.py file.pdb 123A 456X 153B 356Y xxX yyY`, where `xxX` and `yyY` are old and new residues;
-- For the latter, residues (chainID and resSeq) are changed by adapting `res_renumber_pdb_atom.py`
+- For the former usage, the file is reordered based on the alphabetic order of the chains;
+- For the latter usage, residues (chainID and resSeq) are changed by adapting `res_renumber_pdb_atom.py` (which calls **SimRNA**'s `pdb_2_SimRNA_dist_restrs_aligned.py`);
 - If you only want to change the chainID, you can do something like `python reorder_pdb_atom_by_chain.py file.pdb 1A 1X 1B 1Y ... ...` so that there is **no shift** of the resSeq.
 
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `symmetry_2_reorder_args.py`: generate args based on symmetry for `reorder_pdb_atom_by_chain.py`
@@ -107,6 +108,39 @@ tags: research RNA pdb python C++
     ``` 
   - [more details from stackoverflow](https://stackoverflow.com/questions/38987/how-do-i-merge-two-dictionaries-in-a-single-expression-taking-union-of-dictiona#){:target="_blank"}.
 
+### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `extend_helix_pdb.py`: extend helix using ideal A-form helix, depending on two script (a) `append_one_bp_pdb.py`: adding one bp each time, and (b) `insert_res_pdb_atom.py`: adding a list of pdb atom records
+- Access `extend_helix_pdb.py` by the [link](https://www.dropbox.com/s/qekykhrmi5suo3r/extend_helix_pdb.py?dl=0){:target="_blank"}, and use by `python extend_helix_pdb.py file.pdb 123A AUCG 153B CCGGU ...`;
+- Access `append_one_bp_pdb.py` by the [link](https://www.dropbox.com/s/weg6bgx7eurz5xi/append_one_bp_pdb.py?dl=0){:target="_blank"}, and use its core function by `append_one_bp_pdb.append_one_bp(rec_list, target_3P, each_base, target_5P)`, `target_3P` and `target_5P` are the residue markers (such as `99c`) for the 3' and 5' residues, and `target_5P` is optional (can be located by `find_pair_5P(rec_list, target_3P)`);
+- Access `insert_res_pdb_atom.py` by the [link](https://www.dropbox.com/s/1motv9ukvj2zz9x/insert_res_pdb_atom.py?dl=0){:target="_blank"}, and use its core function by `res_insert(rec_list, target_3P, rec_insert, mode="post")` or `res_insert(rec_list, target_3P, rec_insert, mode="post"`);
+- Warnings will be given for `TER` record when the end of the file does not have `TER` record.
+- <i class="far fa-comment-dots"></i> ***Coding notes:***
+  - Floor division operator `//`: 
+    ```python
+    print(5//2) # 2
+    print(-5//2) # -3
+    print(5.0//2) # 2.0
+    ``` 
+  - Handle potential errors:
+    ```python
+    try:
+      if rec_list[insert_index+len(rec_insert)].recordName == "TER":
+        rec_list[insert_index+len(rec_insert)].update_resName(rec_insert[-1].resName)
+        rec_list[insert_index+len(rec_insert)].update_resSeq(rec_insert[-1].resSeq)
+    except IndexError:
+      print("IndexError occurs at %s%s" % (rec_insert[-1].resSeq, rec_insert[-1].chainID))
+      print("But no worries! It's the end that has no TER record.")
+    ```
+  - distance between two points: `curr_dist = np.linalg.norm(np.array(coord_5P_O3)-np.array(coord_curr_P))` with `import numpy as np`.
+
+### <i class="fab fa-python"></i>  `chains_pdb.py`: get chain properties from an input pdb file
+- Access `chains_pdb.py` by the [link](https://www.dropbox.com/s/2vbfx019pmfyft5/chains_pdb.py?dl=0){:target="_blank"}, and use by `python chains_pdb.py filename` for printing the properties of all chains to console, or `python chains_pdb.py A B X ...` for the first usage plus extracting individual chains;
+- Core function `def get_chain_properties(rec_list, chain_rec_list = None):` which `return chain_dict_list`, a list of chain_dict (containing the properties of a certain chain); if `chain_rec_list` is provided (as an an empty list) atoms of all the chains will be written to this `chain_rec_list`;
+- Printing function `def print_chain_properties(chain_dict_list):`. 
+
+### <i class="fab fa-python"></i>  `ligate_strand_pdb.py`: ligate chains from an input pdb file
+- Access `ligate_strand_pdb.py` by the [link](https://www.dropbox.com/s/mz3fgz41yxkc0zj/ligate_strand_pdb.py?dl=0){:target="_blank"}, and use by `python ligate_strand_pdb.py file.pdb A B X ...` to ligate the chains start with A, B, X... (automatically searching for the next possible chains for ligation);
+- This script also relies on `chains_pdb.py` ([link](/2020-12-24-scripts-collection/#--chains_pdbpy-get-chain-properties-from-an-input-pdb-file)), `insert_res_pdb_atom.py` ([link](/2020-12-24-scripts-collection/#--extend_helix_pdbpy-extend-helix-using-ideal-a-form-helix-depending-on-two-script-a-append_one_bp_pdbpy-adding-one-bp-each-time-and-b-insert_res_pdb_atompy-adding-a-list-of-pdb-atom-records)) and `delete_res_pdb_atom.py` (accessible by [link](https://www.dropbox.com/s/ct0u3by92t27u82/delete_res_pdb_atom.py?dl=0){:target="_blank"}). 
+
 ### <i class="fas fa-terminal"></i> `convertPDB`: shell script for PDB format conversion
 - Access `convertPDB` by the [link](https://www.dropbox.com/s/fkm339n6qfb2hvf/convertPDB?dl=0){:target="_blank"} or [preview as text](https://www.dropbox.com/s/ovnp2rid9nvcpg6/convertPDB.sh?dl=0){:target="_blank"};
 - `convertPDB -h` for usage help;
@@ -122,9 +156,9 @@ tags: research RNA pdb python C++
   3. Lastly generating the SimRNA restraints for sticky-end (more precisely, nicked end; output file `restraintsSE_xX.dat`) by calling `pdb_2_SimRNA_dist_restrs_aligned.py`.
 - Be prepared that a lot of PDB files and restraint files will be generated.
 
-### <i class="fab fa-python"></i> `stack_pdb_atom.py`: create a PDB file containing a stacked helix
+### <i class="fab fa-python"></i> `stack_pdb_atom.py`: create a PDB file containing a stacked helix or dinucleotide
 - Access `stack_pdb_atom.py` by the [link](https://www.dropbox.com/s/39sjy98a2zzr11d/get_sticky_from_seq_ss.py?dl=0){:target="_blank"};
-- Use by, for example, `python stack_pdb_atom.py GC 203X 204X 77C 105D`, where `GC` is the sequence for `203X` and `204X` while `77C` is complementary to `204X` and `105D` is complementary to `203X`;
+- Use by, for example, `python stack_pdb_atom.py GC 203X 204X 77C 105D` (usage1 for 4 nt or 2 bp) or `python stack_pdb_atom.py GC 203X 204X` (usage2 for 2 nt), where `GC` is the sequence for `203X` and `204X` while `77C` is complementary to `204X` and `105D` is complementary to `203X`;
 - It works by:
   1. Reading the identities of the 4 residues by the 5 input args;
   2. Then creating a PDB file containing the stacked bases using an ideal RNA helix.
@@ -200,8 +234,9 @@ tags: research RNA pdb python C++
 ## Other
 ### <i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> `ranking_energy_nanotiler.py`: post-process Nanotiler output log files
 - Access `ranking_energy_nanotiler.py` by the [link](https://www.dropbox.com/s/bk25p4jo339n445/ranking_energy_nanotiler.py?dl=0){:target="_blank"};
-- Use by `python ranking_energy_nanotiler.py nt_outfile`, where ***nt_outfile*** is a **Nanotiler** output log file;
-- The  output files should contain the markers written by the nanotiler script files, which should contain:
+- Use by `python ranking_energy_nanotiler.py nt_outfile` or `python ranking_energy_nanotiler.py nt_outfilename1 nt_outfilename2`, where ***nt_outfile(1/2)*** is a **Nanotiler** output log file;
+- For the latter use, both files will be processed, and an extra "Energy_sum ranking" file of `.sum` will be generated.
+- The output files should contain the markers written by the nanotiler script files, which should contain:
   ```bash
   # 100*"#"
   echo ####################################################################################################
@@ -211,9 +246,29 @@ tags: research RNA pdb python C++
   ```
 - So the script can be modified based on the markers written by the **Nanotiler** script;
 - <i class="far fa-comment-dots"></i> ***Coding notes:***
-  - `from pathlib import Path` to convert a string to a `Path` object by `p=Path(nt_outfilename)`;
-  - **Regex**: use `re` module's `re.compile()` function to create **Regex** objects: `float_re = re.compile(r"([+-]?)(\d+)\.(\d+)([Ee]?)([+-]?)(\d*)")` & `float_str = float_re.search(s_s_str).group(0)` for search patterns of a *float* and get its *string*;
+  - `from pathlib import Path` to convert a string to a `Path` object by `p=Path(nt_outfilename)`, most commonly used `p.is_file()`, `p.stem`, and `p.suffix`, for [more info](https://rednafi.github.io/digressions/python/2020/04/13/python-pathlib.html){:target="_blank"};
+  - **Regex**: use `re` module's `re.compile()` function to create **Regex** objects: `float_re = re.compile(r"([+-]?)(\d+)\.(\d+)([Ee]?)([+-]?)(\d*)")` & `float_str = float_re.search(s_s_str).group(0)` for search patterns of a *float* and get its *string*, [phenix_na_ss.py](/2020-12-24-scripts-collection/#--phenix_na_sspy-create-the-class-for-storing-records-of-secondary-structure-restraints-of-phenix-and-reorder-these-records) also uses **Regex**;
   - `sorted(dict_energy.items(), key=lambda x: x[1])` to get a list containing the items of a *dictionary* sorted by the *values*.
 
+### <i class="fab fa-python"></i>  `ranking_energy_nanotiler.py`: search 
+- Access `RNA_complement_search.py` by the [link](blank){:target="_blank"};
+- Use by `python ranking_energy_nanotiler.py nt_outfile` or `python ranking_energy_nanotiler.py nt_outfilename1 nt_outfilename2`, where ***nt_outfile(1/2)*** is a **Nanotiler** output log file;
+- For the latter use, both files will be processed, and an extra "Energy_sum ranking" file of `.sum` will be generated.
+- The output files should contain the markers written by the nanotiler script files, which should contain:
+  ```bash
+  #short
+  seq_short1 (must be in a single line)
+  seq_short2
 
-### <i class="fab fa-cuttlefish"></i> `gen_qrnas_bp_restraint.cpp` need to convert from C++ to python3
+  #long
+  seq_long (can be in multiple lines)
+
+  #restriction
+  GAAGAGC (can be multiple sequences in multiple lines)
+
+  #start
+  ```
+- So the script can be modified based on the markers written by the **Nanotiler** script;
+
+
+### <i class="fab fa-cuttlefish"></i> `gen_qrnas_bp_restraint.cpp` need to convert from C++ to python3 (qrna_bp_from_seq_ss.py will be added!)

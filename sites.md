@@ -22,21 +22,28 @@ tags: website
 - [Google](https://www.google.com/){:target="_blank"}
 - [Youtube](https://www.youtube.com/){:target="_blank"}
 - [Bilibili](https://www.bilibili.com/){:target="_blank"}
-- [Google Scholar](https://scholar.google.com/schhp?hl=en&as_sdt=0,14){:target="_blank"}  
-
+- [Google Scholar](https://scholar.google.com/schhp?hl=en&as_sdt=0,14){:target="_blank"}
+- [Harvard Mail](https://mail.med.harvard.edu/){:target="_blank"} 
 
 ### <i class="fas fa-dna"></i> Science:
+- [Periodic Table](https://www.rsc.org/periodic-table){:target="_blank"}
 - [Nature: DNA nano](https://www.nature.com/subjects/dna-nanotechnology){:target="_blank"}  
 - [PDB](https://www.rcsb.org/){:target="_blank"}  
 - [codecogs equation](https://codecogs.com/latex/eqneditor.php){:target="_blank"}
 - [Endnote Click](https://click.endnote.com/locker){:target="_blank"}
+- [Often viewed...](/2021-09-09-often-viewed-files){:target="_blank"}
 
 ### <i class="fas fa-user-astronaut"></i> Science groups:
 - [Weizmann group](https://www.weizmann-group.com/){:target="_blank"}
 - [Piccirlli group](https://voices.uchicago.edu/piccirillilab/lab-members/){:target="_blank"}
+- [Eric Westhof](https://eric-westhof.ibmc.cnrs.fr/){:target="_blank"}
 - [Yin group](https://yin.hms.harvard.edu/publications.html){:target="_blank"}
 - [Liao group](https://liao.hms.harvard.edu/documentation){:target="_blank"}
 - [More...](#){:target="_blank"}
+
+### <i class="fas fa-pencil-alt"></i> Writing:
+- [Thesaurus](https://www.thesaurus.com/){:target="_blank"}
+- [Greek alphabet](https://www.rapidtables.com/math/symbols/greek_alphabet.html){:target="_blank"}
 
 ### <i class="fas fa-user-graduate"></i> Learning:
 - [Lynda (Linkedin learning)](https://www.linkedin.com/learning/){:target="_blank"}
@@ -66,9 +73,11 @@ tags: website
 - [Webull](https://www.webull.com/){:target="_blank"}
 - [TD Ameritrade](https://www.tdameritrade.com/home.page){:target="_blank"}
 - [Vanguard](https://investor.vanguard.com/home){:target="_blank"}  
+- [Zacks](https://www.zacks.com/portfolios/my-stock-portfolio/?icid=stocks-stocks-nav_tracking-zcom-main_menu_wrapper-my_portfolio){:target="_blank"}
 
 ### <i class="fas fa-ambulance"></i> COVID related:
-- [COVID statistics](https://coronavirus.1point3acres.com/zh){:target="_blank"}
+- [COVID statistics-1.3](https://coronavirus.1point3acres.com/zh){:target="_blank"}
+- [COVID statistics-JHU](https://coronavirus.jhu.edu/data/new-cases){:target="_blank"}
 - [worldometers](https://www.worldometers.info/coronavirus/){:target="_blank"}
 - [MASS Reporting](https://www.mass.gov/info-details/covid-19-response-reporting){:target="_blank"}
 - [COLOR](https://home.color.com/covid/activation/ready-to-activate){:target="_blank"}
@@ -118,6 +127,11 @@ tags: website
   <li>
     <a href="#-science-groups"
       ><i class="fas fa-user-astronaut"></i> Science groups:</a
+    >
+  </li>
+  <li>
+    <a href="#-writing"
+      ><i class="fas fa-pencil-alt"></i> Writing:</a
     >
   </li>
   <li>

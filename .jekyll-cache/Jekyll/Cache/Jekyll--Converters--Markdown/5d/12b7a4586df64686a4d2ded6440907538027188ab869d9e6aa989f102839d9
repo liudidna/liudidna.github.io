@@ -1,0 +1,49 @@
+I"-<h3 id="top_title" class="no_toc">Contents</h3>
+
+<ul id="markdown-toc">
+  <li><a href="#pymol-or-chimera-commands" id="markdown-toc-pymol-or-chimera-commands">Pymol or Chimera commands</a></li>
+  <li><a href="#simrna-rna-modeling" id="markdown-toc-simrna-rna-modeling">SimRNA RNA modeling</a></li>
+  <li><a href="#nanotiler-structure-design" id="markdown-toc-nanotiler-structure-design">Nanotiler structure design</a></li>
+  <li><a href="#scripts-collection-of-this-site" id="markdown-toc-scripts-collection-of-this-site">Scripts collection of this site</a></li>
+  <li><a href="#shared-wiznotes" id="markdown-toc-shared-wiznotes">Shared Wiznotes</a></li>
+</ul>
+
+<hr />
+
+<p><a href="#top_title">
+    <button style="position: fixed; top: 90%; right: 10%; border-radius: 50%; padding: 0.5em 1em;"><i class="fas fa-sync"></i> To top</button>
+</a></p>
+
+<h2 id="pymol-or-chimera-commands">Pymol or Chimera commands</h2>
+<ul>
+  <li>Pymol (<a href="https://www.dropbox.com/s/j5nquty2xzkx8w2/000PymolCommand.txt?dl=0" target="_blank">link</a>)</li>
+  <li>Chimera (<a href="https://www.dropbox.com/s/46pq0bxahi35p7k/000someCMD.txt?dl=0" target="_blank">link</a>)</li>
+</ul>
+
+<h2 id="simrna-rna-modeling">SimRNA RNA modeling</h2>
+<ul>
+  <li>Model a bKL (bKL_b) using restraints (<a href="https://www.dropbox.com/s/1he8cmmnu6i1avt/000simRNA_bKL_b_restr_two_step_skd_short_helix.script?dl=0" target="_blank">link</a>).</li>
+  <li>Model the HIV-1 DIS 180 degree KL using restraints (<a href="https://www.dropbox.com/s/iwgrli1cjp0yo1k/000simRNA_180KL.script?dl=0" target="_blank">link</a>).</li>
+  <li>Model palindromic 6-bp TAR KL (<a href="https://www.dropbox.com/s/uf0tjos5jx623oj/000simRNA_TAR_KL.script?dl=0" target="_blank">link</a>).</li>
+</ul>
+
+<h2 id="nanotiler-structure-design">Nanotiler structure design</h2>
+<ul>
+  <li>Helix scan for 2 lengths (<a href="https://www.dropbox.com/s/dy9fgqxtpujiwlc/TetGI-newHelixScan-P6P8-dimer-NanoTiler.script?dl=0" target="_blank">link</a>).</li>
+  <li>Final opt and output (<a href="https://www.dropbox.com/s/remkh5aofbcn2hs/TetGI-newHelixScan-P6P8-dimer-OPT-2bp-0bp-NanoTiler.script?dl=0" target="_blank">link</a>).</li>
+  <li>Helix scan for 3 lengths (<a href="https://www.dropbox.com/s/aomk882w183rnup/TetGI-newHelixScan-P6P9-bulge-NanoTiler.script?dl=0" target="_blank">link</a>).</li>
+  <li>Final opt and output (<a href="https://www.dropbox.com/s/uf68j7732ut1o51/TetGI-P6P9-bulge-NanoTiler-OPT.script?dl=0" target="_blank">link</a>).</li>
+  <li>Create perfect symmetry (<a href="/2020-12-26-create-symmetric/" target="_blank">link_web</a> and <a href="https://www.dropbox.com/s/7e4ds16b5vu8ge6/symmetry_commands.txt?dl=0" target="_blank">link_file</a> for Pli_iib_6bp_dimer)</li>
+</ul>
+
+<h2 id="scripts-collection-of-this-site">Scripts collection of this site</h2>
+<ul>
+  <li><a href="/2020-12-24-scripts-collection" target="_blank">LINK</a>.</li>
+</ul>
+
+<h2 id="shared-wiznotes">Shared Wiznotes</h2>
+<ul>
+  <li><a href="https://0f3ac55a.wiz06.com/wapp/pages/view/share/s/0feIlq0udx7x2d0M0z1ZXVvc0EbUs21N5Qn_2T0bDL0qc83B" target="_blank">Some path and commands.</a></li>
+</ul>
+
+:ET

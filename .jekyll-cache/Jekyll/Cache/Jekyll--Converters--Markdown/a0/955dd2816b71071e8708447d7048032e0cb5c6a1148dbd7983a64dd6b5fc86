@@ -1,4 +1,4 @@
-I"��<h3 id="top_title" class="no_toc">Contents</h3>
+I"��<h3 id="top_title" class="no_toc">Contents</h3>
 
 <ul id="markdown-toc">
   <li><a href="#related-to-pdb-files" id="markdown-toc-related-to-pdb-files">Related to PDB files</a>    <ul>
@@ -9,12 +9,15 @@
       <li><a href="#-average_structure_pdb_atompy-generate-the-average-coordinates-of-the-structures-from-multiple-pdb-files" id="markdown-toc--average_structure_pdb_atompy-generate-the-average-coordinates-of-the-structures-from-multiple-pdb-files"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">average_structure_pdb_atom.py</code>: generate the average coordinates of the structures from multiple PDB files</a></li>
       <li><a href="#--add_phosphate_pdbpy-add-5-end-phosphates-to-rna-strands" id="markdown-toc---add_phosphate_pdbpy-add-5-end-phosphates-to-rna-strands"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> <code class="language-plaintext highlighter-rouge">add_phosphate_pdb.py</code>: add 5’-end phosphates to RNA strands</a></li>
       <li><a href="#--3-related-scripts-a-add_triphosphate_pdbpy-add-5-triphosphate-b-add_cyclicphosphate_pdbpy-add-23-cyclic-phosphate-and-c-remove_extraphosphate_pdbpy-remove-5-triphosphate-or-23-cyclic-phosphate" id="markdown-toc---3-related-scripts-a-add_triphosphate_pdbpy-add-5-triphosphate-b-add_cyclicphosphate_pdbpy-add-23-cyclic-phosphate-and-c-remove_extraphosphate_pdbpy-remove-5-triphosphate-or-23-cyclic-phosphate"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> 3 related scripts: (a) <code class="language-plaintext highlighter-rouge">add_triphosphate_pdb.py</code>: add 5’-triphosphate, (b) <code class="language-plaintext highlighter-rouge">add_cyclicphosphate_pdb.py</code>: add 2’,3’-cyclic phosphate, and (c) <code class="language-plaintext highlighter-rouge">remove_extraphosphate_pdb.py</code>: remove 5’-triphosphate or 2’,3’-cyclic phosphate</a></li>
+      <li><a href="#--extend_helix_pdbpy-extend-helix-using-ideal-a-form-helix-depending-on-two-script-a-append_one_bp_pdbpy-adding-one-bp-each-time-and-b-insert_res_pdb_atompy-adding-a-list-of-pdb-atom-records" id="markdown-toc---extend_helix_pdbpy-extend-helix-using-ideal-a-form-helix-depending-on-two-script-a-append_one_bp_pdbpy-adding-one-bp-each-time-and-b-insert_res_pdb_atompy-adding-a-list-of-pdb-atom-records"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> <code class="language-plaintext highlighter-rouge">extend_helix_pdb.py</code>: extend helix using ideal A-form helix, depending on two script (a) <code class="language-plaintext highlighter-rouge">append_one_bp_pdb.py</code>: adding one bp each time, and (b) <code class="language-plaintext highlighter-rouge">insert_res_pdb_atom.py</code>: adding a list of pdb atom records</a></li>
+      <li><a href="#--chains_pdbpy-get-chain-properties-from-an-input-pdb-file" id="markdown-toc---chains_pdbpy-get-chain-properties-from-an-input-pdb-file"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">chains_pdb.py</code>: get chain properties from an input pdb file</a></li>
+      <li><a href="#--ligate_strand_pdbpy-ligate-chains-from-an-input-pdb-file" id="markdown-toc---ligate_strand_pdbpy-ligate-chains-from-an-input-pdb-file"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">ligate_strand_pdb.py</code>: ligate chains from an input pdb file</a></li>
       <li><a href="#-convertpdb-shell-script-for-pdb-format-conversion" id="markdown-toc--convertpdb-shell-script-for-pdb-format-conversion"><i class="fas fa-terminal"></i> <code class="language-plaintext highlighter-rouge">convertPDB</code>: shell script for PDB format conversion</a></li>
     </ul>
   </li>
   <li><a href="#related-to-simrna" id="markdown-toc-related-to-simrna">Related to SimRNA</a>    <ul>
       <li><a href="#-get_sticky_from_seq_sspy-create-stacking-restraints-for-simrna" id="markdown-toc--get_sticky_from_seq_sspy-create-stacking-restraints-for-simrna"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">get_sticky_from_seq_ss.py</code>: create stacking restraints for SimRNA</a></li>
-      <li><a href="#-stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix" id="markdown-toc--stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">stack_pdb_atom.py</code>: create a PDB file containing a stacked helix</a></li>
+      <li><a href="#-stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix-or-dinucleotide" id="markdown-toc--stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix-or-dinucleotide"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">stack_pdb_atom.py</code>: create a PDB file containing a stacked helix or dinucleotide</a></li>
       <li><a href="#-terminal_pdb_atompy-create-a-pdb-file-containing-a-base-pair" id="markdown-toc--terminal_pdb_atompy-create-a-pdb-file-containing-a-base-pair"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">terminal_pdb_atom.py</code>: create a PDB file containing a base pair</a></li>
       <li><a href="#-pdb_2_simrna_dist_restrs_alignedpy-create-simrna-distance-restraints" id="markdown-toc--pdb_2_simrna_dist_restrs_alignedpy-create-simrna-distance-restraints"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">pdb_2_SimRNA_dist_restrs_aligned.py</code>: create SimRNA distance restraints</a></li>
       <li><a href="#-trafl_reducepy-reduce-the-amount-of-coordinates-in-the-simrna-trafl-file" id="markdown-toc--trafl_reducepy-reduce-the-amount-of-coordinates-in-the-simrna-trafl-file"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">trafl_reduce.py</code>: reduce the amount of coordinates in the SimRNA trafl file</a></li>
@@ -32,7 +35,8 @@
   </li>
   <li><a href="#other" id="markdown-toc-other">Other</a>    <ul>
       <li><a href="#--ranking_energy_nanotilerpy-post-process-nanotiler-output-log-files" id="markdown-toc---ranking_energy_nanotilerpy-post-process-nanotiler-output-log-files"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> <code class="language-plaintext highlighter-rouge">ranking_energy_nanotiler.py</code>: post-process Nanotiler output log files</a></li>
-      <li><a href="#-gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3" id="markdown-toc--gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3"><i class="fab fa-cuttlefish"></i> <code class="language-plaintext highlighter-rouge">gen_qrnas_bp_restraint.cpp</code> need to convert from C++ to python3</a></li>
+      <li><a href="#--ranking_energy_nanotilerpy-search" id="markdown-toc---ranking_energy_nanotilerpy-search"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">ranking_energy_nanotiler.py</code>: search</a></li>
+      <li><a href="#-gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3-qrna_bp_from_seq_sspy-will-be-added" id="markdown-toc--gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3-qrna_bp_from_seq_sspy-will-be-added"><i class="fab fa-cuttlefish"></i> <code class="language-plaintext highlighter-rouge">gen_qrnas_bp_restraint.cpp</code> need to convert from C++ to python3 (qrna_bp_from_seq_ss.py will be added!)</a></li>
     </ul>
   </li>
 </ul>
@@ -52,7 +56,7 @@
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">edit_pdb_atom.py</code> by the <a href="https://www.dropbox.com/s/b712mcc35a0kc9z/edit_pdb_atom.py?dl=0" target="_blank">link</a>;</li>
   <li>It is used to parse pdb files, mainly for being imported of other scripts: so consider adding the directory containing it to <code class="language-plaintext highlighter-rouge">PYTHONPATH</code> by <code class="language-plaintext highlighter-rouge">export PYTHONPATH=$PYTHONPATH:PATH_TO_THE_DIRECTORY</code>, or use <code class="language-plaintext highlighter-rouge">sys.path.append("PATH_TO_THE_DIRECTORY")</code>;</li>
-  <li>PDB record: I is int, S is string, F is float;</li>
+  <li>PDB record: <strong>I</strong> is int, <strong>S</strong> is string, <strong>F</strong> is float;</li>
   <li>
     <table>
       <thead>
@@ -148,7 +152,8 @@
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">reorder_pdb_atom_by_chain.py</code> by the <a href="https://www.dropbox.com/s/8bb08e2g1kulo80/reorder_pdb_atom_by_chain.py?dl=0" target="_blank">link</a>;</li>
   <li>Use by <code class="language-plaintext highlighter-rouge">python reorder_pdb_atom_by_chain.py file.pdb</code> or <code class="language-plaintext highlighter-rouge">python reorder_pdb_atom_by_chain.py file.pdb 123A 456X 153B 356Y xxX yyY</code>, where <code class="language-plaintext highlighter-rouge">xxX</code> and <code class="language-plaintext highlighter-rouge">yyY</code> are old and new residues;</li>
-  <li>For the latter, residues (chainID and resSeq) are changed by adapting <code class="language-plaintext highlighter-rouge">res_renumber_pdb_atom.py</code></li>
+  <li>For the former usage, the file is reordered based on the alphabetic order of the chains;</li>
+  <li>For the latter usage, residues (chainID and resSeq) are changed by adapting <code class="language-plaintext highlighter-rouge">res_renumber_pdb_atom.py</code> (which calls <strong>SimRNA</strong>’s <code class="language-plaintext highlighter-rouge">pdb_2_SimRNA_dist_restrs_aligned.py</code>);</li>
   <li>If you only want to change the chainID, you can do something like <code class="language-plaintext highlighter-rouge">python reorder_pdb_atom_by_chain.py file.pdb 1A 1X 1B 1Y ... ...</code> so that there is <strong>no shift</strong> of the resSeq.</li>
 </ul>
 
@@ -220,6 +225,48 @@
   </li>
 </ul>
 
+<h3 id="--extend_helix_pdbpy-extend-helix-using-ideal-a-form-helix-depending-on-two-script-a-append_one_bp_pdbpy-adding-one-bp-each-time-and-b-insert_res_pdb_atompy-adding-a-list-of-pdb-atom-records"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> <code class="language-plaintext highlighter-rouge">extend_helix_pdb.py</code>: extend helix using ideal A-form helix, depending on two script (a) <code class="language-plaintext highlighter-rouge">append_one_bp_pdb.py</code>: adding one bp each time, and (b) <code class="language-plaintext highlighter-rouge">insert_res_pdb_atom.py</code>: adding a list of pdb atom records</h3>
+<ul>
+  <li>Access <code class="language-plaintext highlighter-rouge">extend_helix_pdb.py</code> by the <a href="https://www.dropbox.com/s/qekykhrmi5suo3r/extend_helix_pdb.py?dl=0" target="_blank">link</a>, and use by <code class="language-plaintext highlighter-rouge">python extend_helix_pdb.py file.pdb 123A AUCG 153B CCGGU ...</code>;</li>
+  <li>Access <code class="language-plaintext highlighter-rouge">append_one_bp_pdb.py</code> by the <a href="https://www.dropbox.com/s/weg6bgx7eurz5xi/append_one_bp_pdb.py?dl=0" target="_blank">link</a>, and use its core function by <code class="language-plaintext highlighter-rouge">append_one_bp_pdb.append_one_bp(rec_list, target_3P, each_base, target_5P)</code>, <code class="language-plaintext highlighter-rouge">target_3P</code> and <code class="language-plaintext highlighter-rouge">target_5P</code> are the residue markers (such as <code class="language-plaintext highlighter-rouge">99c</code>) for the 3’ and 5’ residues, and <code class="language-plaintext highlighter-rouge">target_5P</code> is optional (can be located by <code class="language-plaintext highlighter-rouge">find_pair_5P(rec_list, target_3P)</code>);</li>
+  <li>Access <code class="language-plaintext highlighter-rouge">insert_res_pdb_atom.py</code> by the <a href="https://www.dropbox.com/s/1motv9ukvj2zz9x/insert_res_pdb_atom.py?dl=0" target="_blank">link</a>, and use its core function by <code class="language-plaintext highlighter-rouge">res_insert(rec_list, target_3P, rec_insert, mode="post")</code> or <code class="language-plaintext highlighter-rouge">res_insert(rec_list, target_3P, rec_insert, mode="post"</code>);</li>
+  <li>Warnings will be given for <code class="language-plaintext highlighter-rouge">TER</code> record when the end of the file does not have <code class="language-plaintext highlighter-rouge">TER</code> record.</li>
+  <li><i class="far fa-comment-dots"></i> <strong><em>Coding notes:</em></strong>
+    <ul>
+      <li>Floor division operator <code class="language-plaintext highlighter-rouge">//</code>:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="mi">5</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 2
+</span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># -3
+</span><span class="k">print</span><span class="p">(</span><span class="mf">5.0</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 2.0
+</span></code></pre></div>        </div>
+      </li>
+      <li>Handle potential errors:
+        <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">rec_list</span><span class="p">[</span><span class="n">insert_index</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">rec_insert</span><span class="p">)].</span><span class="n">recordName</span> <span class="o">==</span> <span class="s">"TER"</span><span class="p">:</span>
+    <span class="n">rec_list</span><span class="p">[</span><span class="n">insert_index</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">rec_insert</span><span class="p">)].</span><span class="n">update_resName</span><span class="p">(</span><span class="n">rec_insert</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">resName</span><span class="p">)</span>
+    <span class="n">rec_list</span><span class="p">[</span><span class="n">insert_index</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">rec_insert</span><span class="p">)].</span><span class="n">update_resSeq</span><span class="p">(</span><span class="n">rec_insert</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">resSeq</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">IndexError</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"IndexError occurs at %s%s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">rec_insert</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">resSeq</span><span class="p">,</span> <span class="n">rec_insert</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">chainID</span><span class="p">))</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"But no worries! It's the end that has no TER record."</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>distance between two points: <code class="language-plaintext highlighter-rouge">curr_dist = np.linalg.norm(np.array(coord_5P_O3)-np.array(coord_curr_P))</code> with <code class="language-plaintext highlighter-rouge">import numpy as np</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="--chains_pdbpy-get-chain-properties-from-an-input-pdb-file"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">chains_pdb.py</code>: get chain properties from an input pdb file</h3>
+<ul>
+  <li>Access <code class="language-plaintext highlighter-rouge">chains_pdb.py</code> by the <a href="https://www.dropbox.com/s/2vbfx019pmfyft5/chains_pdb.py?dl=0" target="_blank">link</a>, and use by <code class="language-plaintext highlighter-rouge">python chains_pdb.py filename</code> for printing the properties of all chains to console, or <code class="language-plaintext highlighter-rouge">python chains_pdb.py A B X ...</code> for the first usage plus extracting individual chains;</li>
+  <li>Core function <code class="language-plaintext highlighter-rouge">def get_chain_properties(rec_list, chain_rec_list = None):</code> which <code class="language-plaintext highlighter-rouge">return chain_dict_list</code>, a list of chain_dict (containing the properties of a certain chain); if <code class="language-plaintext highlighter-rouge">chain_rec_list</code> is provided (as an an empty list) atoms of all the chains will be written to this <code class="language-plaintext highlighter-rouge">chain_rec_list</code>;</li>
+  <li>Printing function <code class="language-plaintext highlighter-rouge">def print_chain_properties(chain_dict_list):</code>.</li>
+</ul>
+
+<h3 id="--ligate_strand_pdbpy-ligate-chains-from-an-input-pdb-file"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">ligate_strand_pdb.py</code>: ligate chains from an input pdb file</h3>
+<ul>
+  <li>Access <code class="language-plaintext highlighter-rouge">ligate_strand_pdb.py</code> by the <a href="https://www.dropbox.com/s/mz3fgz41yxkc0zj/ligate_strand_pdb.py?dl=0" target="_blank">link</a>, and use by <code class="language-plaintext highlighter-rouge">python ligate_strand_pdb.py file.pdb A B X ...</code> to ligate the chains start with A, B, X… (automatically searching for the next possible chains for ligation);</li>
+  <li>This script also relies on <code class="language-plaintext highlighter-rouge">chains_pdb.py</code> (<a href="/2020-12-24-scripts-collection/#--chains_pdbpy-get-chain-properties-from-an-input-pdb-file">link</a>), <code class="language-plaintext highlighter-rouge">insert_res_pdb_atom.py</code> (<a href="/2020-12-24-scripts-collection/#--extend_helix_pdbpy-extend-helix-using-ideal-a-form-helix-depending-on-two-script-a-append_one_bp_pdbpy-adding-one-bp-each-time-and-b-insert_res_pdb_atompy-adding-a-list-of-pdb-atom-records">link</a>) and <code class="language-plaintext highlighter-rouge">delete_res_pdb_atom.py</code> (accessible by <a href="https://www.dropbox.com/s/ct0u3by92t27u82/delete_res_pdb_atom.py?dl=0" target="_blank">link</a>).</li>
+</ul>
+
 <h3 id="-convertpdb-shell-script-for-pdb-format-conversion"><i class="fas fa-terminal"></i> <code class="language-plaintext highlighter-rouge">convertPDB</code>: shell script for PDB format conversion</h3>
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">convertPDB</code> by the <a href="https://www.dropbox.com/s/fkm339n6qfb2hvf/convertPDB?dl=0" target="_blank">link</a> or <a href="https://www.dropbox.com/s/ovnp2rid9nvcpg6/convertPDB.sh?dl=0" target="_blank">preview as text</a>;</li>
@@ -242,10 +289,10 @@
   <li>Be prepared that a lot of PDB files and restraint files will be generated.</li>
 </ul>
 
-<h3 id="-stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">stack_pdb_atom.py</code>: create a PDB file containing a stacked helix</h3>
+<h3 id="-stack_pdb_atompy-create-a-pdb-file-containing-a-stacked-helix-or-dinucleotide"><i class="fab fa-python"></i> <code class="language-plaintext highlighter-rouge">stack_pdb_atom.py</code>: create a PDB file containing a stacked helix or dinucleotide</h3>
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">stack_pdb_atom.py</code> by the <a href="https://www.dropbox.com/s/39sjy98a2zzr11d/get_sticky_from_seq_ss.py?dl=0" target="_blank">link</a>;</li>
-  <li>Use by, for example, <code class="language-plaintext highlighter-rouge">python stack_pdb_atom.py GC 203X 204X 77C 105D</code>, where <code class="language-plaintext highlighter-rouge">GC</code> is the sequence for <code class="language-plaintext highlighter-rouge">203X</code> and <code class="language-plaintext highlighter-rouge">204X</code> while <code class="language-plaintext highlighter-rouge">77C</code> is complementary to <code class="language-plaintext highlighter-rouge">204X</code> and <code class="language-plaintext highlighter-rouge">105D</code> is complementary to <code class="language-plaintext highlighter-rouge">203X</code>;</li>
+  <li>Use by, for example, <code class="language-plaintext highlighter-rouge">python stack_pdb_atom.py GC 203X 204X 77C 105D</code> (usage1 for 4 nt or 2 bp) or <code class="language-plaintext highlighter-rouge">python stack_pdb_atom.py GC 203X 204X</code> (usage2 for 2 nt), where <code class="language-plaintext highlighter-rouge">GC</code> is the sequence for <code class="language-plaintext highlighter-rouge">203X</code> and <code class="language-plaintext highlighter-rouge">204X</code> while <code class="language-plaintext highlighter-rouge">77C</code> is complementary to <code class="language-plaintext highlighter-rouge">204X</code> and <code class="language-plaintext highlighter-rouge">105D</code> is complementary to <code class="language-plaintext highlighter-rouge">203X</code>;</li>
   <li>It works by:
     <ol>
       <li>Reading the identities of the 4 residues by the 5 input args;</li>
@@ -334,29 +381,11 @@
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">phenix_res_from_seq_ss.py</code> by the <a href="https://www.dropbox.com/s/8fmkbve1ubft34g/phenix_res_from_seq_ss.py?dl=0" target="_blank">link</a>;</li>
   <li>Use by <code class="language-plaintext highlighter-rouge">python phenix_res_from_seq_ss.py seq_file ss_file out_file</code>, where <code class="language-plaintext highlighter-rouge">seq_file</code> and <code class="language-plaintext highlighter-rouge">ss_file</code> are <strong>SimRNA</strong> sequence file and secondary-structure file;</li>
-  <li><code class="language-plaintext highlighter-rouge">class base_pair_record</code> and <code class="language-plaintext highlighter-rouge">class stacking_pair_record</code> is created by 3 or 2 lines of the records in file:
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pdb_interpretation</span> <span class="p">{</span>
-  <span class="n">secondary_structure</span> <span class="p">{</span>
-    <span class="n">nucleic_acid</span> <span class="p">{</span>
-      <span class="n">base_pair</span> <span class="p">{</span>
-        <span class="n">base1</span> <span class="o">=</span> <span class="n">chain</span> <span class="s">'A'</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">372</span>
-        <span class="n">base2</span> <span class="o">=</span> <span class="n">chain</span> <span class="s">'A'</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">399</span>
-        <span class="n">saenger_class</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># 19 for GC, 20 for AU, 28 for GU
-</span>      <span class="p">}</span>
-      <span class="n">stacking_pair</span> <span class="p">{</span>
-        <span class="n">base1</span> <span class="o">=</span> <span class="n">chain</span> <span class="s">'A'</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">417</span>
-        <span class="n">base2</span> <span class="o">=</span> <span class="n">chain</span> <span class="s">'A'</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">418</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">enabled</span> <span class="o">=</span> <span class="bp">True</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
+  <li>The script is dependent on <a href="#-get_sticky_from_seq_sspy-create-stacking-restraints-for-simrna"><code class="language-plaintext highlighter-rouge">get_sticky_from_seq_ss.py</code></a> and <a href="#--phenix_na_sspy-create-the-class-for-storing-records-of-secondary-structure-restraints-of-phenix-and-reorder-these-records"><code class="language-plaintext highlighter-rouge">phenix_na_ss.py</code></a>.</li>
   <li><i class="far fa-comment-dots"></i> <strong><em>Coding notes:</em></strong>
     <ul>
-      <li><strong>tuples</strong> can be compared, such as <code class="language-plaintext highlighter-rouge">if (self.base1["chain"], self.base1["resid"]) &gt; (self.base2["chain"], self.base2["resid"]):</code>;</li>
-      <li><strong>tuples</strong> can be used as the <code class="language-plaintext highlighter-rouge">key</code> for <code class="language-plaintext highlighter-rouge">sorted()</code>, such as <code class="language-plaintext highlighter-rouge">sorted(record_list, key=lambda x: (x.base1["chain"], x.base1["resid"]))</code>.</li>
+      <li>Even use <code class="language-plaintext highlighter-rouge">from file_other improt some_function</code>, all the codes in <code class="language-plaintext highlighter-rouge">file_other</code> will be executed, solution is <code class="language-plaintext highlighter-rouge">if __name__ == '__main__':</code>;</li>
+      <li>Directly assigning a new value to an object such as <code class="language-plaintext highlighter-rouge">list</code> in function will not change its value outside of the function, solution is <code class="language-plaintext highlighter-rouge">return</code>.</li>
     </ul>
   </li>
 </ul>
@@ -365,8 +394,9 @@
 <h3 id="--ranking_energy_nanotilerpy-post-process-nanotiler-output-log-files"><i class="fab fa-python"></i> <i class="far fa-comment-dots"></i> <code class="language-plaintext highlighter-rouge">ranking_energy_nanotiler.py</code>: post-process Nanotiler output log files</h3>
 <ul>
   <li>Access <code class="language-plaintext highlighter-rouge">ranking_energy_nanotiler.py</code> by the <a href="https://www.dropbox.com/s/bk25p4jo339n445/ranking_energy_nanotiler.py?dl=0" target="_blank">link</a>;</li>
-  <li>Use by <code class="language-plaintext highlighter-rouge">python ranking_energy_nanotiler.py nt_outfile</code>, where <strong><em>nt_outfile</em></strong> is a <strong>Nanotiler</strong> output log file;</li>
-  <li>The  output files should contain the markers written by the nanotiler script files, which should contain:
+  <li>Use by <code class="language-plaintext highlighter-rouge">python ranking_energy_nanotiler.py nt_outfile</code> or <code class="language-plaintext highlighter-rouge">python ranking_energy_nanotiler.py nt_outfilename1 nt_outfilename2</code>, where <strong><em>nt_outfile(1/2)</em></strong> is a <strong>Nanotiler</strong> output log file;</li>
+  <li>For the latter use, both files will be processed, and an extra “Energy_sum ranking” file of <code class="language-plaintext highlighter-rouge">.sum</code> will be generated.</li>
+  <li>The output files should contain the markers written by the nanotiler script files, which should contain:
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 100*"#"</span>
 <span class="nb">echo</span> <span class="c">####################################################################################################</span>
 <span class="nb">echo </span>HBP1: <span class="k">${</span><span class="nv">HBP1</span><span class="k">}</span>   HBP2: <span class="k">${</span><span class="nv">HBP2</span><span class="k">}</span>
@@ -377,12 +407,34 @@
   <li>So the script can be modified based on the markers written by the <strong>Nanotiler</strong> script;</li>
   <li><i class="far fa-comment-dots"></i> <strong><em>Coding notes:</em></strong>
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">from pathlib import Path</code> to convert a string to a <code class="language-plaintext highlighter-rouge">Path</code> object by <code class="language-plaintext highlighter-rouge">p=Path(nt_outfilename)</code>;</li>
-      <li><strong>Regex</strong>: use <code class="language-plaintext highlighter-rouge">re</code> module’s <code class="language-plaintext highlighter-rouge">re.compile()</code> function to create <strong>Regex</strong> objects: <code class="language-plaintext highlighter-rouge">float_re = re.compile(r"([+-]?)(\d+)\.(\d+)([Ee]?)([+-]?)(\d*)")</code> &amp; <code class="language-plaintext highlighter-rouge">float_str = float_re.search(s_s_str).group(0)</code> for search patterns of a <em>float</em> and get its <em>string</em>;</li>
+      <li><code class="language-plaintext highlighter-rouge">from pathlib import Path</code> to convert a string to a <code class="language-plaintext highlighter-rouge">Path</code> object by <code class="language-plaintext highlighter-rouge">p=Path(nt_outfilename)</code>, most commonly used <code class="language-plaintext highlighter-rouge">p.is_file()</code>, <code class="language-plaintext highlighter-rouge">p.stem</code>, and <code class="language-plaintext highlighter-rouge">p.suffix</code>, for <a href="https://rednafi.github.io/digressions/python/2020/04/13/python-pathlib.html" target="_blank">more info</a>;</li>
+      <li><strong>Regex</strong>: use <code class="language-plaintext highlighter-rouge">re</code> module’s <code class="language-plaintext highlighter-rouge">re.compile()</code> function to create <strong>Regex</strong> objects: <code class="language-plaintext highlighter-rouge">float_re = re.compile(r"([+-]?)(\d+)\.(\d+)([Ee]?)([+-]?)(\d*)")</code> &amp; <code class="language-plaintext highlighter-rouge">float_str = float_re.search(s_s_str).group(0)</code> for search patterns of a <em>float</em> and get its <em>string</em>, <a href="/2020-12-24-scripts-collection/#--phenix_na_sspy-create-the-class-for-storing-records-of-secondary-structure-restraints-of-phenix-and-reorder-these-records">phenix_na_ss.py</a> also uses <strong>Regex</strong>;</li>
       <li><code class="language-plaintext highlighter-rouge">sorted(dict_energy.items(), key=lambda x: x[1])</code> to get a list containing the items of a <em>dictionary</em> sorted by the <em>values</em>.</li>
     </ul>
   </li>
 </ul>
 
-<h3 id="-gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3"><i class="fab fa-cuttlefish"></i> <code class="language-plaintext highlighter-rouge">gen_qrnas_bp_restraint.cpp</code> need to convert from C++ to python3</h3>
+<h3 id="--ranking_energy_nanotilerpy-search"><i class="fab fa-python"></i>  <code class="language-plaintext highlighter-rouge">ranking_energy_nanotiler.py</code>: search</h3>
+<ul>
+  <li>Access <code class="language-plaintext highlighter-rouge">RNA_complement_search.py</code> by the <a href="blank" target="_blank">link</a>;</li>
+  <li>Use by <code class="language-plaintext highlighter-rouge">python ranking_energy_nanotiler.py nt_outfile</code> or <code class="language-plaintext highlighter-rouge">python ranking_energy_nanotiler.py nt_outfilename1 nt_outfilename2</code>, where <strong><em>nt_outfile(1/2)</em></strong> is a <strong>Nanotiler</strong> output log file;</li>
+  <li>For the latter use, both files will be processed, and an extra “Energy_sum ranking” file of <code class="language-plaintext highlighter-rouge">.sum</code> will be generated.</li>
+  <li>The output files should contain the markers written by the nanotiler script files, which should contain:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#short</span>
+seq_short1 <span class="o">(</span>must be <span class="k">in </span>a single line<span class="o">)</span>
+seq_short2
+
+<span class="c">#long</span>
+seq_long <span class="o">(</span>can be <span class="k">in </span>multiple lines<span class="o">)</span>
+
+<span class="c">#restriction</span>
+GAAGAGC <span class="o">(</span>can be multiple sequences <span class="k">in </span>multiple lines<span class="o">)</span>
+
+<span class="c">#start</span>
+</code></pre></div>    </div>
+  </li>
+  <li>So the script can be modified based on the markers written by the <strong>Nanotiler</strong> script;</li>
+</ul>
+
+<h3 id="-gen_qrnas_bp_restraintcpp-need-to-convert-from-c-to-python3-qrna_bp_from_seq_sspy-will-be-added"><i class="fab fa-cuttlefish"></i> <code class="language-plaintext highlighter-rouge">gen_qrnas_bp_restraint.cpp</code> need to convert from C++ to python3 (qrna_bp_from_seq_ss.py will be added!)</h3>
 :ET

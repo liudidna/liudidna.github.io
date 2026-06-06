@@ -6,7 +6,7 @@ subtitle: This page is not designed to give you surprise
 
 My name is **Di Liu**. I am:
 
-- A researcher working on DNA/RNA nanotechnology ([ASU Profile]:https://search.asu.edu/profile/4845837)
+- A researcher working on DNA/RNA nanotechnology ([ASU Profile]: https://search.asu.edu/profile/4845837)
 - An amateur runner to keep my body weight reasonable
 - An amateur painter to express some feelings
 - Fond of exploring various new things

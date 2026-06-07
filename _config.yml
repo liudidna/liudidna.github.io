@@ -222,6 +222,7 @@ exclude:
   - README.md
   - screenshot.png
   - docs/
+  - vendor/
 
 collections:
   services2:
@@ -232,4 +233,3 @@ plugins:
   - jekyll-sitemap
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
-
